@@ -1,0 +1,190 @@
+{
+  "main": {
+    "id": "863606128718b525",
+    "type": "split",
+    "children": [
+      {
+        "id": "6d3d5c0d580860ab",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d1b64ff03eccf5d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "scaffolds/links.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "ec482649b3c98e9b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/prattle/index.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6be5632d47d586f0",
+    "type": "split",
+    "children": [
+      {
+        "id": "2551797303b1fd0f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f9c6267c5d4eeffb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "893ef07461a670e0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9cffe2da231e10c2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "e41f4bc8afc9fad6",
+    "type": "split",
+    "children": [
+      {
+        "id": "6377dad55a0e2333",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "008c555d4880528a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "source/prattle/index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "089b9fb03c3dd132",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "source/prattle/index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "75f75ad4ff3146c4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "fdde025f2e861a03",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "source/prattle/index.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:開啟快速切換": false,
+      "graph:查看關聯圖": false,
+      "canvas:建立新畫布": false,
+      "daily-notes:開啟今天的每日筆記": false,
+      "templates:插入模板": false,
+      "command-palette:開啟命令面板": false
+    }
+  },
+  "active": "ec482649b3c98e9b",
+  "lastOpenFiles": [
+    "source/_posts/hello-world.md",
+    "source/prattle/index.md",
+    "source/prattle",
+    "source/categories/index.md",
+    "public/links/index.html",
+    "public/links",
+    "public/categories/index.html",
+    "public/categories",
+    "public/about/index.html",
+    "public/about",
+    "source/links/index.md",
+    "scaffolds/post.md",
+    "source/categories",
+    "scaffolds/draft.md",
+    "scaffolds/about.md",
+    "scaffolds/page.md",
+    "scaffolds/links.md",
+    "source/about/index.md",
+    "source/links",
+    "source/link/index.md",
+    "source/_posts/2024-03-08-about.md",
+    "source/about",
+    "source/_about/index.md",
+    "README.md",
+    "about/未命名.md"
+  ]
+}
