@@ -1,0 +1,11 @@
+- name: Index
+  href: index.md
+- name: LearningNotes
+- name: ABP
+  items:
+  - href: ABP/GettingStart.md
+- name: SchoolWorks
+- name: HuaWeiPracticalTraining
+  items:
+  - href: SchoolRelated/PracticalTraining/DAY00.md
+  - href: SchoolRelated/PracticalTraining/DAY01.md
