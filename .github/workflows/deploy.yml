@@ -1,31 +1,46 @@
-name: Deploy to GitHub Pages
-
+name: deploy_documentation
 on:
   push:
     branches:
-      - main  # 当 main 分支有新推送时触发
-
+      - master # Default release branch
 jobs:
   build-and-deploy:
     runs-on: windows-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout master #获取master，放在master目录下
+        uses: actions/checkout@v2.3.1
         with:
-          node-version: '14'
+          ref: master
+          path: master
 
-      - name: Install DocFX
-        run: npm install -g docfx
-
-      - name: Build the site
-        run: docfx build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Install docfx #安装docfx
+        run: choco install docfx -y
+      - name: docfx build #生成文档，这里会输出到master/docs，如果你采用默认的docfx设置，就是master/_site
+        run: docfx docfx.json
+        working-directory: master
+      - name: Checkout docs #获取gh-pages，如果没有这个分支，需要手动创建一下
+        uses: actions/checkout@v2.3.1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+          ref: gh-pages
+          path: gh-pages
+      - name: Clear docs #清空gh-pages中的内容
+        run: Get-ChildItem -Force -Exclude .git | ForEach-Object { Remove-Item -Recurse -Verbose -Force $_ }
+        working-directory: gh-pages
+      - name: Sync new content #复制生成的docs到gh-pages
+        run: Copy-Item -Recurse -Verbose -Force "$env:GITHUB_WORKSPACE/master/docs/*" "$env:GITHUB_WORKSPACE/gh-pages"
+        working-directory: gh-pages
+      - name: Commit to gh-pages and push #提交推送
+        run: |
+          $ErrorActionPreference = "Continue"
+          git add -A
+          git diff HEAD --exit-code
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "No changes to commit!"
+          } else {
+            git config --global user.name "github-actions-docfx[bot]"
+            git config --global user.email "gz4nna@gmail.com"
+            git commit -m "Updated docs from commit $env:GITHUB_SHA on $env:GITHUB_REF"
+            git remote set-url origin https://x-access-token:${{ secrets.DEPLOY_DOC }}@github.com/${{ github.repository }}
+            git push origin gh-pages
+          }
+        working-directory: gh-pages         
