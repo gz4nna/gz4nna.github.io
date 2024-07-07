@@ -1,0 +1,141 @@
+{
+  "source_base_path": "D:/gz4nna.github.io",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "about/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "about/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "about/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "about/toc.html"
+        },
+        ".json": {
+          "relative_path": "about/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "archives/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "archives/toc.html"
+        },
+        ".json": {
+          "relative_path": "archives/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/ABP/GettingStart.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/ABP/GettingStart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY00.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY00.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY01.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY01.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "notes/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "notes/toc.html"
+        },
+        ".json": {
+          "relative_path": "notes/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
