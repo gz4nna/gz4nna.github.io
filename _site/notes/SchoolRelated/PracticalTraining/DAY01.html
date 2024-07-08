@@ -156,7 +156,7 @@
 <p>這行命令一般會在倉庫醒目位置標出</p>
 </li>
 </ol>
-<h3 id="熟悉基本arkui開發">熟悉基本ArkUI開發</h3>
+<h3 id="熟悉基本arkui開發分析説明之類的有時間再補充">熟悉基本ArkUI開發（分析説明之類的，有時間再補充）</h3>
 <p>在以上步驟完成之後，可通過deveco創建一個空項目，選項均保持默認即可</p>
 <p>某人創建了一個名爲<strong>PracticalTraining</strong>的項目，創建後將默認打開文件Index.ets</p>
 <p>關於文件目錄的詳細信息請參照華爲相關文檔或等待某人後文的補充</p>
@@ -184,9 +184,7 @@
 </li>
 </ol>
 <pre><code class="lang-java">@Styles function rowStyle(){  
-  .padding(10)  
-  .width(&quot;100%&quot;)  
-  .border({width:{bottom:1},color:&quot;#EEE&quot;})  
+  .padding(10).width(&quot;100%&quot;).border({width:{bottom:1},color:&quot;#EEE&quot;})  
 }  
   
 @Extend(Row) function rowBlock(){  
@@ -201,23 +199,17 @@ export default struct Test1{
         Row() {  
           Text(&quot;名字&quot;)  
           Text(&quot;GZ4nna&quot;)  
-        }  
-        .rowBlock()  
-        .rowStyle()  
+        }.rowBlock().rowStyle()  
   
         Row() {  
           Text(&quot;账户&quot;)  
           Text(&quot;GZ4nna&quot;)  
-        }  
-        .rowBlock()  
-        .rowStyle()  
+        }.rowBlock().rowStyle()  
   
         Row() {  
           Text(&quot;年龄&quot;)  
           Text(&quot;&quot; + 123)  
-        }  
-        .rowBlock()  
-        .rowStyle()  
+        }.rowBlock().rowStyle()  
   
       }.backgroundColor(&quot;#FFF&quot;)  
     }.width(&quot;100%&quot;).height(&quot;100%&quot;).backgroundColor(&quot;#AAA&quot;)  
@@ -286,8 +278,86 @@ export default struct Test2{
 <ol>
 <li>創建子組件</li>
 <li>編輯代碼</li>
+</ol>
+<pre><code class="lang-java">@Component  
+struct Person{  
+  @Link username:string  
+  @Link age:number  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;子组件&quot;)  
+      }.width(&quot;100%&quot;).padding(10)  
+      .justifyContent(FlexAlign.Center).backgroundColor(&quot;#b1ae65&quot;)  
+  
+      Column(){  
+        Row(){  
+          Text(&quot;姓名&quot;)  
+          TextInput({text:this.username}).onChange((val)=&gt;{  
+            this.username = val  
+          }).flexBasis(220).backgroundColor(&quot;#FFF&quot;)  
+        }  
+        .width(&quot;100%&quot;).padding({left:10,right:10,top:10,bottom:3})  
+        .justifyContent(FlexAlign.SpaceBetween)  
+        .border({width:{bottom:1},color:&quot;#EEE&quot;})  
+  
+        Row(){  
+          Text(&quot;年龄&quot;)  
+          TextInput({text:this.age + &quot;&quot;}).onChange((val)=&gt;{  
+            this.age = parseInt(val)  
+          }).flexBasis(220).backgroundColor(&quot;#FFF&quot;).type(InputType.Number)  
+        }.width(&quot;100%&quot;).padding({left:10,right:10,top:10,bottom:3})  
+        .justifyContent(FlexAlign.SpaceBetween).border({width:{bottom:1},color:&quot;#EEE&quot;})  
+      }.flexGrow(1)  
+    }  
+    .width(300).height(150).border({width:1})  
+  }  
+}  
+</code></pre>
+<ol>
 <li>編輯父組件</li>
 </ol>
+<pre><code class="lang-java">@Component  
+export default struct Test3{  
+  @State username:string = &quot;张三&quot;  
+  @State age:number = 23  
+  @State sex:string = &quot;张三&quot;  
+  
+  build(){  
+    Column(){  
+      Column(){  
+        Row(){  
+          Text(&quot;父组件&quot;)  
+        }.width(&quot;100%&quot;).padding(10)  
+        .justifyContent(FlexAlign.Center).backgroundColor(&quot;#0F0&quot;)  
+  
+        Column(){  
+          Row(){  
+            Text(&quot;姓名&quot;)  
+            TextInput({text:this.username}).onChange((val)=&gt;{  
+              this.username = val  
+            }).flexBasis(220).backgroundColor(&quot;#FFF&quot;)  
+          }.width(&quot;100%&quot;).padding({left:10,right:10,top:10,bottom:3})  
+          .justifyContent(FlexAlign.SpaceBetween).border({width:{bottom:1},color:&quot;#EEE&quot;})  
+  
+          Row(){  
+            Text(&quot;年龄&quot;)  
+            TextInput({text:this.age + &quot;&quot;}).onChange((val)=&gt;{  
+              this.age = parseInt(val)  
+            }).flexBasis(220).backgroundColor(&quot;#FFF&quot;).type(InputType.Number)  
+          }.width(&quot;100%&quot;).padding({left:10,right:10,top:10,bottom:3})  
+          .justifyContent(FlexAlign.SpaceBetween).border({width:{bottom:1},color:&quot;#EEE&quot;})  
+        }.flexGrow(1)  
+      }.width(300).height(150).border({width:1})  
+  
+      Person({username:$username,age:$age})  
+  
+      Person({username:$username,age:$age})  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;).justifyContent(FlexAlign.SpaceEvenly)  
+  }  
+}
+</code></pre>
 <p>後面沒好沒好。。。</p>
 <p>父组件直接点出属性，可以连续添加
 比如</p>

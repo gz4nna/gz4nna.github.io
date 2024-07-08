@@ -87,7 +87,7 @@
 	
 	這行命令一般會在倉庫醒目位置標出
 	
-### 熟悉基本ArkUI開發
+### 熟悉基本ArkUI開發（分析説明之類的，有時間再補充）
 
 在以上步驟完成之後，可通過deveco創建一個空項目，選項均保持默認即可
 
@@ -133,9 +133,7 @@
 
 ```java
 @Styles function rowStyle(){  
-  .padding(10)  
-  .width("100%")  
-  .border({width:{bottom:1},color:"#EEE"})  
+  .padding(10).width("100%").border({width:{bottom:1},color:"#EEE"})  
 }  
   
 @Extend(Row) function rowBlock(){  
@@ -150,23 +148,17 @@ export default struct Test1{
         Row() {  
           Text("名字")  
           Text("GZ4nna")  
-        }  
-        .rowBlock()  
-        .rowStyle()  
+        }.rowBlock().rowStyle()  
   
         Row() {  
           Text("账户")  
           Text("GZ4nna")  
-        }  
-        .rowBlock()  
-        .rowStyle()  
+        }.rowBlock().rowStyle()  
   
         Row() {  
           Text("年龄")  
           Text("" + 123)  
-        }  
-        .rowBlock()  
-        .rowStyle()  
+        }.rowBlock().rowStyle()  
   
       }.backgroundColor("#FFF")  
     }.width("100%").height("100%").backgroundColor("#AAA")  
@@ -243,9 +235,88 @@ import Test from "../components/Test2"
 
 1. 創建子組件
 2. 編輯代碼
-3. 編輯父組件
 
+```java
+@Component  
+struct Person{  
+  @Link username:string  
+  @Link age:number  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text("子组件")  
+      }.width("100%").padding(10)  
+      .justifyContent(FlexAlign.Center).backgroundColor("#b1ae65")  
+  
+      Column(){  
+        Row(){  
+          Text("姓名")  
+          TextInput({text:this.username}).onChange((val)=>{  
+            this.username = val  
+          }).flexBasis(220).backgroundColor("#FFF")  
+        }  
+        .width("100%").padding({left:10,right:10,top:10,bottom:3})  
+        .justifyContent(FlexAlign.SpaceBetween)  
+        .border({width:{bottom:1},color:"#EEE"})  
+  
+        Row(){  
+          Text("年龄")  
+          TextInput({text:this.age + ""}).onChange((val)=>{  
+            this.age = parseInt(val)  
+          }).flexBasis(220).backgroundColor("#FFF").type(InputType.Number)  
+        }.width("100%").padding({left:10,right:10,top:10,bottom:3})  
+        .justifyContent(FlexAlign.SpaceBetween).border({width:{bottom:1},color:"#EEE"})  
+      }.flexGrow(1)  
+    }  
+    .width(300).height(150).border({width:1})  
+  }  
+}  
+```
 
+1. 編輯父組件
+
+```java
+@Component  
+export default struct Test3{  
+  @State username:string = "张三"  
+  @State age:number = 23  
+  @State sex:string = "张三"  
+  
+  build(){  
+    Column(){  
+      Column(){  
+        Row(){  
+          Text("父组件")  
+        }.width("100%").padding(10)  
+        .justifyContent(FlexAlign.Center).backgroundColor("#0F0")  
+  
+        Column(){  
+          Row(){  
+            Text("姓名")  
+            TextInput({text:this.username}).onChange((val)=>{  
+              this.username = val  
+            }).flexBasis(220).backgroundColor("#FFF")  
+          }.width("100%").padding({left:10,right:10,top:10,bottom:3})  
+          .justifyContent(FlexAlign.SpaceBetween).border({width:{bottom:1},color:"#EEE"})  
+  
+          Row(){  
+            Text("年龄")  
+            TextInput({text:this.age + ""}).onChange((val)=>{  
+              this.age = parseInt(val)  
+            }).flexBasis(220).backgroundColor("#FFF").type(InputType.Number)  
+          }.width("100%").padding({left:10,right:10,top:10,bottom:3})  
+          .justifyContent(FlexAlign.SpaceBetween).border({width:{bottom:1},color:"#EEE"})  
+        }.flexGrow(1)  
+      }.width(300).height(150).border({width:1})  
+  
+      Person({username:$username,age:$age})  
+  
+      Person({username:$username,age:$age})  
+    }.width("100%").height("100%").justifyContent(FlexAlign.SpaceEvenly)  
+  }  
+}
+```
 
 
 
