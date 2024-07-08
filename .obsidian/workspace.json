@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "about/index.md",
+                "file": "notes/SchoolRelated/PracticalTraining/DAY01.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "e15d15458d73d990",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "about/index.md",
+                "file": "notes/SchoolRelated/PracticalTraining/DAY01.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "about/index.md",
+                "file": "notes/SchoolRelated/PracticalTraining/DAY01.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "about/index.md"
+                "file": "notes/SchoolRelated/PracticalTraining/DAY01.md"
               }
             }
           }
@@ -148,14 +148,15 @@
   },
   "active": "a18cba3892e690fe",
   "lastOpenFiles": [
+    "notes/SchoolRelated/PracticalTraining/DAY00.md",
+    "notes/SchoolRelated/PracticalTraining/DAY01.md",
+    "about/index.md",
     "archives/index.md",
     "notes/index.md",
-    "notes/SchoolRelated/PracticalTraining/DAY00.md",
     "_site/notes/SchoolRelated/PracticalTraining/DAY01.html",
     "_site/notes/SchoolRelated/PracticalTraining/DAY00.html",
     "_site/notes/SchoolRelated/PracticalTraining",
     "_site/notes/SchoolRelated",
-    "notes/SchoolRelated/PracticalTraining/DAY01.md",
     "notes/SchoolRelated/PracticalTraining",
     "notes/SchoolRelated",
     "notes/新建文件夹",
@@ -165,7 +166,6 @@
     "_site/archives/toc.json",
     "notes/ABP/GettingStart.md",
     "notes/ABP/test.md",
-    "about/index.md",
     "notes/LearningNotes/ABP/GettingStart.md",
     "notes/introduction.md",
     "notes/getting-started.md"
