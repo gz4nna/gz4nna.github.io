@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>暑期實訓 其之二 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="暑期實訓 其之二 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY02.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="暑期實訓-其之二">暑期實訓 其之二</h1>
+
+<h2 id="前言">前言</h2>
+<p>接<a href="./DAY01.html">上文</a></p>
+<p>此頁記錄實訓第二天内容，首先總結一下今日事項，主要概括為以下幾方面</p>
+<ul>
+<li>補充第一天未講解的部分</li>
+<li>熟悉各種組件及基本使用方法</li>
+</ul>
+<h2 id="主要内容">主要内容</h2>
+<p>由於基本動作皆爲在組件目錄中創建一個新組件來進行一輪嘗試，因此接下來僅展示部分主要代碼</p>
+<h3 id="基本使用">基本使用</h3>
+<h4 id="外部類使用">外部類使用</h4>
+<p>組件内容：</p>
+<pre><code class="lang-typescript">import Person from &quot;../models/Person&quot;  
+  
+  
+@Extend(Row) function rowBlock(){  
+  .width(&quot;100%&quot;).padding({left:10,right:10,top:10,bottom:3})  
+  .justifyContent(FlexAlign.SpaceBetween).border({width:{bottom:1},color:&quot;#AAA&quot;})  
+}  
+  
+@Component  
+struct Item{  
+  @Link person : Person  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;子组件&quot;)  
+      }.width(&quot;100%&quot;).padding(10)  
+      .justifyContent(FlexAlign.Center).backgroundColor(&quot;#ff65b17e&quot;)  
+  
+      Column(){  
+        Row(){  
+          Text(&quot;姓名&quot;)  
+          TextInput({text:this.person.username}).onChange((val)=&gt;{  
+            this.person.username = val  
+          }).flexBasis(220).backgroundColor(&quot;#FFF&quot;)  
+        }.rowBlock()  
+  
+        Row(){  
+          Text(&quot;年龄&quot;)  
+          TextInput({text:this.person.age + &quot;&quot;}).onChange((val)=&gt;{  
+            this.person.age = parseInt(val)  
+          }).flexBasis(220).backgroundColor(&quot;#FFF&quot;).type(InputType.Number)  
+        }.rowBlock()  
+      }.flexGrow(1)  
+    }  
+    .width(300).height(150).border({width:1})  
+  }  
+}  
+  
+@Component  
+export default struct Test4{  
+  @State person : Person = new Person()  
+  
+  aboutToAppear(){  
+    this.person.username = &quot;张三&quot;  
+    this.person.age = 23  
+  }  
+  
+  build(){  
+    Column(){  
+      Column(){  
+        Row(){  
+          Text(&quot;父组件&quot;)  
+        }.width(&quot;100%&quot;).padding(10)  
+        .justifyContent(FlexAlign.Center).backgroundColor(&quot;#b1ae65&quot;)  
+  
+        Column(){  
+          Row(){  
+            Text(&quot;姓名&quot;)  
+            TextInput({text:this.person.username}).onChange((val)=&gt;{  
+              this.person.username = val  
+            }).flexBasis(220).backgroundColor(&quot;#FFF&quot;)  
+          }.rowBlock()  
+  
+          Row(){  
+            Text(&quot;年龄&quot;)  
+            TextInput({text:this.person.age + &quot;&quot;}).onChange((val)=&gt;{  
+              this.person.age = parseInt(val)  
+            }).flexBasis(220).backgroundColor(&quot;#FFF&quot;).type(InputType.Number)  
+          }.rowBlock()  
+        }.flexGrow(1)  
+      }  
+      .width(300).height(150).border({width:1})  
+  
+      Item({person:$person})  
+  
+      Item({person:$person})  
+  
+      Item({person:$person})  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+    .backgroundColor(&quot;#EEE&quot;).justifyContent(FlexAlign.SpaceEvenly)  
+  }  
+}
+</code></pre>
+<p>類内容：</p>
+<pre><code class="lang-typescript">export default class Person{  
+  username : string  
+  age : number  
+  email : string  
+  
+  constructor() {  
+    this.username = &quot;&quot;  
+    this.age = 0  
+    this.email = &quot;&quot;  
+  }  
+}
+</code></pre>
+<p>其中，我們將Person類的定義單獨放在了一個新文件中，通過語句</p>
+<pre><code class="lang-typescript">import Person from &quot;../models/Person&quot;  
+</code></pre>
+<p>對其進行引用</p>
+<h3 id="熟悉各種組件">熟悉各種組件</h3>
+<h4 id="滾動條組件">滾動條組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test4{  
+  @State array : Array&lt;string&gt; =[姓名列表，已去除内容]  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;滚动条&quot;)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+      Scroll(){  
+        Column(){  
+          ForEach(this.array, (item, index) =&gt; {  
+            Row(){  
+              Text(item)  
+            }.width(&quot;100%&quot;).padding(10).margin(5)  
+            .backgroundColor(&quot;#EEE&quot;).justifyContent(FlexAlign.Center)  
+          })  
+        }  
+      }.scrollable(ScrollDirection.Vertical)  
+      .onScroll((x, y) =&gt;{  
+        console.info(`position x:${x} y:${y}`)  
+      }).flexBasis(600).scrollBar(BarState.On)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>Scroll為滾動組件，可將其中内容進行滾動</p>
+<p>默認進行竪向滾動，可通過屬性scrollable修改</p>
+<p>滾動時觸發事件為onScroll，接受一個含雙參方法，輸入橫縱坐標</p>
+<pre><code class="lang-typescript">(method) ScrollAttribute.onScroll(event: (xOffset: number, yOffset: number) =&gt; void): ScrollAttribute
+</code></pre>
+<h4 id="文本選擇器">文本選擇器</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test6{  
+  @State selectArray : Array&lt;string&gt; = [&quot;张飞&quot;,&quot;关羽&quot;,&quot;刘备&quot;,&quot;赵云&quot;]  
+  @State value : string = &quot;张飞&quot;  
+  @State selectArray1 : Array&lt;string&gt; = [&quot;21&quot;,&quot;22&quot;,&quot;23&quot;,&quot;24&quot;]  
+  @State value1 : string = &quot;21&quot;  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;三国人物&quot;)  
+        TextPicker({range:this.selectArray,value:this.value})  
+          .onChange((val) =&gt; {  
+            this.value = val  
+          })  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Row(){  
+        Text(&quot;选取值&quot;)  
+        Text(this.value)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Row(){  
+        Text(&quot;年龄&quot;)  
+        TextPicker({range:this.selectArray1,value:this.value1})  
+          .onChange((val) =&gt; {  
+            this.value1 = val  
+          })  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Row(){  
+        Text(&quot;选取值&quot;)  
+        Text(this.value1)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>TextPicker為文本選擇器，可選中範圍内的文本，接受一個選項，常見取值範圍</p>
+<pre><code class="lang-typescript">const TextPicker: TextPickerInterface
+(options?: TextPickerOptions) =&gt; TextPickerAttribute
+</code></pre>
+<p>所選内容發生變化時觸發onChange，接受含單參方法，傳入當前選擇内容</p>
+<h4 id="時間選擇器">時間選擇器</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test7{  
+  @State hour:number = 0  
+  @State minute:number = 0  
+  
+  date:Date = new Date(&quot;2024-7-9 14:00:00&quot;)  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;时间选择器&quot;).fontSize(20).fontWeight(700)  
+      }.padding(10).width(&quot;100%&quot;).backgroundColor(&quot;#FF0&quot;)  
+      .justifyContent(FlexAlign.Center)  
+  
+      Row(){  
+        Text(&quot;出发时间&quot;)  
+        Text(`2024-7-9 ${this.hour}:${this.minute}:00`)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Row(){  
+        Text(&quot;12小时制&quot;)  
+  
+        TimePicker({selected:this.date}).width(200)  
+          .onChange((date) =&gt; {  
+            this.date = new Date(`2024-7-9 ${date.hour}:${date.minute}:00`)  
+          })  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Row(){  
+        Text(&quot;24小时制&quot;)  
+  
+        TimePicker({selected:new Date(`2024-7-9 ${this.hour}:${this.minute}`)}).width(200)  
+          .onChange((date) =&gt; {  
+            this.hour = date.hour  
+            this.minute = date.minute  
+          }).useMilitaryTime(true)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>TimePicker時間選擇器，接受一個選項，與文本選擇器不同，一般直接確定的時間，可以在範圍内取值</p>
+<pre><code class="lang-typescript">const TimePicker: TimePickerInterface
+(options?: TimePickerOptions) =&gt; TimePickerAttribute
+</code></pre>
+<p>内容更新時觸發onChange</p>
+<p>可通過useMilitaryTime修改顯示時間格式</p>
+<h4 id="日期選擇器">日期選擇器</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test8{  
+  @State date:DatePickerResult = {}  
+  @State selectedDate:string = &quot;&quot;  
+  
+  aboutToAppear(){  
+    this.selectedDate = &quot;2024-7-9 00:00:00&quot;  
+    var now = new Date(this.selectedDate)  
+    this.date.year = now.getFullYear()  
+    this.date.month = now.getMonth()  
+    this.date.day = now.getDay()  
+  }  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;日期选择器&quot;).fontColor(&quot;#FFF&quot;).fontWeight(700).fontSize(20)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+      .backgroundColor(&quot;#ff106922&quot;)  
+  
+      Text(`${this.date.year}-${this.date.month}-${this.date.day} 00:00:00`)  
+      Text(new Date(`${this.date.year}-${this.date.month}-${this.date.day} 00:00:00`).toString())  
+  
+      Row(){  
+        Text(&quot;出生年月&quot;)  
+        DatePicker({selected:new Date(this.selectedDate)})  
+          .width(200).onChange((date) =&gt; {  
+          this.date.year = date.year  
+          this.date.month = date.month + 1  
+          this.date.day = date.day  
+          this.selectedDate = `${date.year}-${date.month + 1}-${date.day} 00:00:00`          console.log(`date year: ${date.year}`)  
+        })  
+      }.width(&quot;100%&quot;).justifyContent(FlexAlign.SpaceBetween).padding({ left:10,right:10 })  
+      .backgroundColor(&quot;#ff989898&quot;)  
+  
+      Row(){  
+        Text(&quot;出生年月农历&quot;)  
+        DatePicker({selected:new Date(this.selectedDate)})  
+          .width(200).onChange((date) =&gt; {  
+          this.date.year = date.year  
+          this.date.month = date.month + 1  
+          this.date.day = date.day  
+          this.selectedDate = `${date.year}-${date.month + 1}-${date.day} 00:00:00`        }).lunar(true)  
+      }.width(&quot;100%&quot;).justifyContent(FlexAlign.SpaceBetween).padding({ left:10,right:10 })  
+      .backgroundColor(&quot;#ff989898&quot;)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>DatePicker日期選擇器，接受一個選項，常見默認選擇日期</p>
+<pre><code class="lang-typescript">const DatePicker: DatePickerInterface
+(options?: DatePickerOptions) =&gt; DatePickerAttribute
+</code></pre>
+<p>可通過lunar指定顯示模式為陰曆，此時内部表示日期的值依然是陽曆</p>
+<h4 id="單選框">單選框</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test9{  
+  @State roleArray:Array&lt;string&gt; = [&quot;管理员&quot;,&quot;研发人员&quot;,&quot;资料人员&quot;,&quot;测试人员&quot;,&quot;考勤员&quot;]  
+  @State roleSelect:Array&lt;boolean&gt; = []  
+  @State selectIndex:number = 2  
+  
+  aboutAppear(){  
+    this.roleArray.forEach(() =&gt; {  
+      this.roleSelect.push(false)  
+    })  
+    this.roleSelect[this.selectIndex] = true  
+  }  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;角色列表&quot;).fontColor(&quot;#FFF&quot;)  
+      }.backgroundColor(&quot;#f200&quot;).width(&quot;100%&quot;).justifyContent(FlexAlign.Center).padding(10)  
+  
+      Column(){  
+        ForEach(this.roleArray, (item, index) =&gt;{  
+          Row(){  
+            Radio({group:&quot;roleManage1&quot;,value:item}).margin({right:20})  
+              .checked(this.roleSelect[index])  
+              .onChange((val) =&gt; {  
+                this.roleSelect[index] = val  
+                if(val){  
+                  this.selectIndex = index  
+                }  
+              })  
+            Text(item)  
+          }.width(100)  
+        })  
+      }.height(200).justifyContent(FlexAlign.SpaceEvenly)  
+  
+      Column(){  
+        ForEach(this.roleArray, (item, index) =&gt;{  
+          Row(){  
+            Radio({group:&quot;roleManage2&quot;,value:item}).margin({right:20})  
+              .checked(this.roleSelect[index])  
+              .onChange((val) =&gt; {  
+                this.roleSelect[index] = val  
+                if(val){  
+                  this.selectIndex = index  
+                }  
+              })  
+            Text(item)  
+          }.width(100)  
+        })  
+      }.height(200).justifyContent(FlexAlign.SpaceEvenly)  
+  
+      Row(){  
+        Text(&quot;选中角色&quot;)  
+        Text(this.roleArray[this.selectIndex])  
+      }.width(&quot;100%&quot;).justifyContent(FlexAlign.SpaceBetween).padding(10)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>Radio為單選框，接受一個選項，不僅需要設定值，還要劃分組別</p>
+<pre><code class="lang-typescript">const Radio: RadioInterface
+(options: RadioOptions) =&gt; RadioAttribute
+</code></pre>
+<p>checked在被選中時執行，onChange在選擇狀態改變時執行</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY02.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
