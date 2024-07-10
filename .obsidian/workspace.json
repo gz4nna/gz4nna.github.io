@@ -8,19 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a18cba3892e690fe",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "notes/SchoolRelated/PracticalTraining/DAY01.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d62d7403452a0603",
+            "id": "70db508b77568484",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -159,11 +146,13 @@
       "command-palette:開啟命令面板": false
     }
   },
-  "active": "d62d7403452a0603",
+  "active": "70db508b77568484",
   "lastOpenFiles": [
+    "notes/SchoolRelated/PracticalTraining/DAY03.md",
+    "notes/SchoolRelated/PracticalTraining/DAY02.md",
+    "_site/notes/SchoolRelated/PracticalTraining/DAY03.html",
     "_site/notes/SchoolRelated/PracticalTraining/DAY02.html",
     "notes/SchoolRelated/PracticalTraining/DAY01.md",
-    "notes/SchoolRelated/PracticalTraining/DAY02.md",
     "notes/SchoolRelated/PracticalTraining/DAY00.md",
     "about/index.md",
     "archives/index.md",
@@ -177,8 +166,6 @@
     "notes/新建文件夹",
     "index.md",
     "_site/notes/index.html",
-    "_site/archives/toc.pdf",
-    "_site/archives/toc.json",
     "notes/ABP/GettingStart.md",
     "notes/ABP/test.md",
     "notes/LearningNotes/ABP/GettingStart.md",

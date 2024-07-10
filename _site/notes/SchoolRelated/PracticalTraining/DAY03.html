@@ -1,0 +1,561 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>暑期實訓 其之三 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="暑期實訓 其之三 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY03.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="暑期實訓-其之三">暑期實訓 其之三</h1>
+
+<h2 id="前言">前言</h2>
+<p>接<a href="./DAY02.html">上文</a></p>
+<p>此頁記錄實訓第三天内容，今日全程熟悉組件用法</p>
+<p>首先給出結論，前三天的所有内容不出一個上午就可以全部掌握，之後應該也會繼續花幾天時間消耗在試用功能這種瑣事上，所以“名稱-使用示例”這樣的呈現方式可能還得持續些篇幅</p>
+<p>某人認爲更合適的學習路綫</p>
+<ol>
+<li><p>基礎用法和概念直接查看<a href="https://developer.huawei.com.cn/consumer/cn/doc/">文檔</a></p>
+</li>
+<li><p>詳細信息去翻<a href="https://gitee.com/openharmony/docs">項目</a></p>
+</li>
+</ol>
+<p>另外，雖説鴻蒙開發和安卓開發名義上劃清界限了，但是按照目前看來至少界面的設計還是很有相通之處的。再加上縫合了多種現代語言的特點，所以對於有開發基礎的人來説，上手只會更快</p>
+<h2 id="主要内容">主要内容</h2>
+<h4 id="複選框組件">複選框組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test10{  
+  @State  
+  studentArray:Array&lt;string&gt; = [&quot;小学&quot;,&quot;中学&quot;,&quot;高中&quot;,&quot;一本&quot;,&quot;二本&quot;,&quot;三本&quot;,&quot;研究生&quot;]  
+  
+  @State  
+  @Watch(&quot;countStudentName&quot;)  
+  checkArray:Array&lt;boolean&gt; = []  
+  
+  @State  
+  selectIndex1:Array&lt;number&gt; = [2,3]  
+  
+  @State  
+  selectIndex:Array&lt;number&gt; = []  
+  
+  @State  
+  checkStudentName:string = &quot;&quot;  
+  
+  
+  countStudentName(){  
+    this.checkStudentName = &quot;&quot;  
+    this.selectIndex.splice(0, this.selectIndex.length)  
+    this.checkArray.forEach((item, index) =&gt; {  
+      if(item){  
+        this.checkStudentName += this.studentArray[index] + &quot;|&quot;  
+        this.selectIndex.push(index)  
+      }  
+    })  
+  }  
+  
+  aboutToAppear(){  
+    this.studentArray.forEach(() =&gt; {  
+      this.checkArray.push(false)  
+    })  
+  
+    this.selectIndex1.forEach((item) =&gt;{  
+      this.checkArray[item] = true  
+    })  
+  }  
+  
+  build(){  
+    Column() {  
+      Row() {  
+        Text(&quot;学历管理&quot;).fontColor(&quot;#FFF&quot;).fontSize(20).fontWeight(700)  
+      }.backgroundColor(&quot;#FF0&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Column(){  
+        ForEach(this.studentArray, (item, index) =&gt; {  
+          Row() {  
+            Checkbox({ group: &quot;student&quot;, name: item })  
+              .margin({ right: 40 }).select(this.checkArray[index])  
+              .onChange((val) =&gt; {  
+                this.checkArray[index] = val  
+              })  
+            Text(item)  
+          }.width(100)  
+        })  
+      }.height(200).justifyContent(FlexAlign.SpaceEvenly)  
+  
+      Divider()  
+  
+      Column(){  
+        ForEach(this.studentArray, (item, index) =&gt; {  
+          Row() {  
+            Checkbox({ group: &quot;student&quot;, name: item })  
+              .margin({ right: 40 }).select(this.checkArray[index])  
+              .onChange((val) =&gt; {  
+                this.checkArray[index] = val  
+              })  
+            Text(item)  
+          }.width(100)  
+        })  
+      }.height(200).justifyContent(FlexAlign.SpaceEvenly)  
+  
+      Divider()  
+  
+      Row() {  
+        Text(&quot;学历&quot;)  
+        Text(this.checkStudentName)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Row() {  
+        Text(&quot;索引&quot;)  
+        Text(JSON.stringify(this.selectIndex))  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="下拉框組件">下拉框組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test11{  
+  @State  
+  sexArray:Array&lt;SelectOption&gt; = [  
+    {value:&quot;请选择&quot;},  
+    {value:&quot;男&quot;},  
+    {value:&quot;女&quot;}  
+  ]  
+  
+  @State  
+  sexValue:string = &quot;请选择&quot;  
+  
+  @State  
+  runArray:Array&lt;SelectOption&gt; = [  
+    {value:&quot;请选择&quot;},  
+    {value:&quot;足球&quot;},  
+    {value:&quot;篮球&quot;},  
+    {value:&quot;网球&quot;},  
+    {value:&quot;排球&quot;}  
+  ]  
+  
+  @State  
+  runIndex:number = 1  
+  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;下拉列表&quot;)  
+      }.backgroundColor(&quot;#f466&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Row(){  
+        Text(&quot;性别&quot;)  
+        Select(this.sexArray).value(this.sexValue)  
+          .onSelect((index,item) =&gt; {  
+            this.sexValue = item  
+          })  
+  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Row(){  
+        Text(&quot;性别值&quot;)  
+        Text(this.sexValue)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Divider()  
+  
+      Row(){  
+        Text(&quot;运动&quot;)  
+        Select(this.runArray).selected(this.runIndex)  
+          .value(this.runArray[this.runIndex].value.toString())  
+          .onSelect((index) =&gt; {  
+            this.runIndex = index  
+          })  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Divider()  
+  
+      Row(){  
+        Text(&quot;运动索引&quot;)  
+        Text(this.runIndex + &quot;&quot;)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="滑動組件">滑動組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test12{  
+  
+  @State  
+  startFlag:boolean = true  
+  
+  @State  
+  sendFlag:boolean = false  
+  
+  @State  
+  stopFlag:boolean = false  
+  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;滑动组件&quot;).fontColor(&quot;#FFF&quot;).padding(20)  
+      }.backgroundColor(&quot;#F330&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Row(){  
+        Text(&quot;是否启动&quot;)  
+        Toggle({type:ToggleType.Switch,isOn:this.startFlag}).onChange((val) =&gt; {  
+          this.startFlag = val  
+        })  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Divider()  
+  
+      Row(){  
+        Text(&quot;是否启动&quot;)  
+        Toggle({type:ToggleType.Switch,isOn:this.startFlag}).onChange((val) =&gt; {  
+          this.startFlag = val  
+        })  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Divider()  
+  
+      Row(){  
+        Text(&quot;是否启动&quot;)  
+        Text(this.startFlag + &quot;&quot;)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Divider()  
+  
+      Row(){  
+        Text(&quot;发送消息&quot;)  
+        Toggle({type:ToggleType.Checkbox,isOn:this.sendFlag}).onChange((val) =&gt; {  
+          this.sendFlag = val  
+        })  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Divider()  
+  
+      Row(){  
+        Text(&quot;发送消息&quot;)  
+        Text(this.sendFlag + &quot;&quot;)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+  
+      Row(){  
+        Text(&quot;停止运行&quot;)  
+        Toggle({type:ToggleType.Button,isOn:this.stopFlag}).onChange((val) =&gt; {  
+          this.stopFlag = val  
+        }).width(70)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Divider()  
+  
+      Row(){  
+        Text(&quot;停止运行&quot;)  
+        Toggle({type:ToggleType.Button,isOn:this.stopFlag}).onChange((val) =&gt; {  
+          this.stopFlag = val  
+        }).width(70).backgroundColor(&quot;#AAA&quot;).selectedColor(&quot;#0F0&quot;)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Divider()  
+  
+      Row(){  
+        Text(&quot;停止运行&quot;)  
+        Text(this.stopFlag + &quot;&quot;)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="進度條組件">進度條組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test13{  
+  
+  @State  
+  value:number = 0  
+  
+  @State  
+  total:number = 250  
+  
+  addProgress(){  
+    setTimeout(() =&gt; {  
+      this.addProgress()  
+      this.value += 10  
+      if(this.value &gt; this.total + 20){  
+        this.value = 0  
+      }  
+    }, 1000)  
+  }  
+  
+  aboutToAppear(){  
+    this.addProgress()  
+  }  
+  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;进度条&quot;).fontSize(20).fontColor(&quot;#FFF&quot;)  
+      }.backgroundColor(&quot;#FF0&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Scroll(){  
+        Column(){  
+          Row(){  
+            Text(&quot;进度&quot;)  
+            Text(this.value + &quot;&quot;)  
+          }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+          Progress({value:this.value, total:this.total})  
+  
+          Progress({value:this.value, total:this.total, type:ProgressType.Ring}).width(200)  
+            .rotate({angle:180}).color(&quot;#F00&quot;).backgroundColor(&quot;#00F&quot;)  
+  
+          Progress({value:this.value, total:this.total, type:ProgressType.ScaleRing}).width(200)  
+            .color(&quot;#FF0&quot;).backgroundColor(&quot;#F00&quot;)  
+  
+          Progress({value:this.value, total:this.total, type:ProgressType.Eclipse}).width(200)  
+  
+          Progress({value:this.value, total:this.total, type:ProgressType.Capsule}).width(200)  
+  
+        }.justifyContent(FlexAlign.SpaceEvenly)  
+      }.flexGrow(1)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="搜索組件">搜索組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test14{  
+  
+  @State  
+  searchVal:string = &quot;&quot;  
+  
+  @State  
+  srcArray:Array&lt;string&gt; = [****]  
+  
+  @State  
+  descArray:Array&lt;string&gt; = []  
+  
+  @State  
+  scrollHeight:number = 0  
+  
+  scroll:Scroller = new Scroller()  
+  
+  aboutToAppear(){  
+    this.descArray = [...this.srcArray]  
+    this.scrollHeight = this.descArray.length * 40  
+  }  
+  
+  build() {  
+    Column(){  
+      Row(){  
+        Text(&quot;搜索组件&quot;).fontColor(&quot;#FFF&quot;).fontSize(20)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween).backgroundColor(&quot;#F511&quot;)  
+  
+      Search({placeholder:&quot;请输入条件&quot;, value:this.searchVal}).onSubmit((val) =&gt; {  
+        this.searchVal = val  
+        this.descArray.splice(0,this.descArray.length)  
+        if(val === &quot;&quot;){  
+          this.descArray = [...this.srcArray]  
+        }  
+        else{  
+          this.srcArray.forEach((item) =&gt; {  
+            if(item.indexOf(val) !== -1){  
+              this.descArray.push(item)  
+            }  
+          })  
+        }  
+        this.scroll.scrollEdge(Edge.Top)  
+        this.scrollHeight = this.descArray.length * 40  
+      })  
+  
+      Scroll(this.scroll){  
+        Column(){  
+          ForEach(this.descArray, (item,index) =&gt; {  
+            Row(){  
+              Text(index + &quot;&quot;)  
+              Text(item)  
+            }.width(&quot;100%&quot;).height(40).justifyContent(FlexAlign.SpaceBetween)  
+          })  
+        }  
+      }.flexGrow(1).backgroundColor(&quot;#F00&quot;).height(this.scrollHeight)  
+  
+    }.width(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>這裏某人畫蛇添足了許多内容，起因是示例中發生了一個小問題，情況復現如下：</p>
+<ol>
+<li>未進行搜索時，顯示所有記錄，由於記錄較多，所以很自然地充斥整個界面</li>
+<li>執行搜索，示例中的邏輯為根據輸入關鍵詞進行局部匹配</li>
+<li>儅篩選結束時，若匹配項較少，則這些項目會在豎直方向上居中顯示</li>
+</ol>
+<p>根據講師對多個區域著色嘗試定位每個組件區域推測，應該不是示例原意，但是講師嘗試未果后放棄更正</p>
+<p>某人排查后發現，是Scroll的父元素Column的height屬性被設爲100%導致高度撐開了整個屏幕，儅内部元素高度不夠時，被自動置中了，因此去掉該屬性賦值即可</p>
+<p>期間嘗試使用option來創建scroll，在搜索執行結束后對Scroller類對象執行scrollEdge方法使其滾動到邊界，然而這對於自身高度小於父組件高度的scroll來説是無效的，因爲顯示時已然為滾動至邊界狀態</p>
+<p>此外還嘗試了固定元素的外觀如高度之類的屬性，雖然也沒有效果，但是期間某人才意識到是父元素的問題</p>
+<p>該問題的排查暴露了某人在前端基礎上的不足，若是熟知常見的佈局模型，應該能少走彎路</p>
+<h4 id="面板組件">面板組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test15{  
+  
+  @State  
+  show:boolean = true  
+  
+  @State  
+  birthday:DatePickerResult = {year:1980, month:1, day:4}  
+  
+  birthdayValue:string = &quot;&quot;  
+  
+  aboutToAppear(){  
+    this.birthdayValue = `${this.birthday.year}-${this.birthday.month}-${this.birthday.day}`  
+  }  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;面板组件&quot;).fontColor(&quot;#FFF&quot;)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center).backgroundColor(&quot;#F800&quot;)  
+  
+      Row(){  
+        Text(&quot;出生年月&quot;)  
+        Text(`${this.birthday.year}-${this.birthday.month}-${this.birthday.day}`)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+      .onClick(() =&gt; {  
+        this.show = !this.show  
+      })  
+  
+      Divider()  
+  
+      Panel(this.show){  
+        Row(){  
+          Text(&quot;编译出生日期&quot;)  
+        }.padding(10)  
+  
+        Divider()  
+  
+        DatePicker({selected:new Date(`${this.birthdayValue} 01:01:01`)}).width(200).onChange((date)=&gt;{  
+          this.birthday.year = date.year  
+          this.birthday.month = date.month + 1  
+          this.birthday.day = date.day  
+          this.birthdayValue = `${this.birthday.year}-${this.birthday.month}-${this.birthday.day}`  
+          console.info(&quot;date year:&quot; + JSON.stringify(date))  
+        })  
+  
+        Button(&quot;确认&quot;).width(&quot;95%&quot;).margin(10).onClick(() =&gt; {  
+          this.show = false  
+        })  
+      }.miniHeight(100).mode(PanelMode.Mini)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>此處用到了DatePicker，和前一次使用時一樣，示例中將birthday同時作爲被修改值用來記錄當前選定值，又作爲選擇器打開時的選擇初值，這在使用IDE提供的模擬器運行時會出現選擇值跳動問題，並無法滾動到指定的内容</p>
+<p>解決思路也是一樣的，既然selected屬性值只在一開始作用，而變值只在onChange方法中進行改變，那麽完全可以替換掉selected中對birthday的引用。option的具體生效方式可以去項目倉庫中搜索</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY03.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
