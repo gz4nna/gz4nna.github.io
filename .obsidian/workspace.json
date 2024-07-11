@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/SchoolRelated/PracticalTraining/DAY02.md",
+                "file": "notes/SchoolRelated/PracticalTraining/DAY03.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "292025be023e8625",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "notes/SchoolRelated/PracticalTraining/DAY04.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes/SchoolRelated/PracticalTraining/DAY02.md",
+                "file": "notes/SchoolRelated/PracticalTraining/DAY04.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "notes/SchoolRelated/PracticalTraining/DAY02.md",
+                "file": "notes/SchoolRelated/PracticalTraining/DAY04.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/SchoolRelated/PracticalTraining/DAY02.md"
+                "file": "notes/SchoolRelated/PracticalTraining/DAY04.md"
               }
             }
           }
@@ -146,8 +159,11 @@
       "command-palette:開啟命令面板": false
     }
   },
-  "active": "70db508b77568484",
+  "active": "292025be023e8625",
   "lastOpenFiles": [
+    "_site/notes/SchoolRelated/PracticalTraining/DAY04.html",
+    "index.md",
+    "notes/SchoolRelated/PracticalTraining/DAY04.md",
     "notes/SchoolRelated/PracticalTraining/DAY03.md",
     "notes/SchoolRelated/PracticalTraining/DAY02.md",
     "_site/notes/SchoolRelated/PracticalTraining/DAY03.html",
@@ -164,7 +180,6 @@
     "notes/SchoolRelated/PracticalTraining",
     "notes/SchoolRelated",
     "notes/新建文件夹",
-    "index.md",
     "_site/notes/index.html",
     "notes/ABP/GettingStart.md",
     "notes/ABP/test.md",
