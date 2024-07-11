@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>暑期實訓 其之四 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="暑期實訓 其之四 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY04.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="暑期實訓-其之四">暑期實訓 其之四</h1>
+
+<h2 id="前言">前言</h2>
+<p>接<a href="./DAY03.html">上文</a></p>
+<p>此頁記錄實訓第四天内容，除了和先前一樣的熟悉組件用法之外，還涉及了一些佈局相關的基礎</p>
+<p>此外，講師提及接下來即將安排進行網絡授課學習，準備考取某認證</p>
+<h2 id="主要内容">主要内容</h2>
+<p>首先延續先前内容，介紹了最後兩個常見的功能性控件元素的使用方法：列表組件和列表分組組件</p>
+<h3 id="功能性控件">功能性控件</h3>
+<h4 id="列表組件">列表組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test16{  
+  
+  @State  
+  studentArray:Array&lt;string&gt; = [****]  
+  
+  @Builder  
+  editRowInfo(item:string, index:number){  
+    Row(){  
+      Search({value:item, icon:&quot;&quot;}).onSubmit((val) =&gt; {  
+        this.studentArray[index] = val  
+      })  
+    }.padding(10).height(50)  
+  
+  }  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;人员列表&quot;).fontColor(&quot;#FFF&quot;)  
+  
+      }.backgroundColor(&quot;#F283&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      List(){  
+        ForEach(this.studentArray, (item, index) =&gt; {  
+          ListItem(){  
+            Row(){  
+              Text(index.toString())  
+              Text(item)  
+            }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+            .border({width:{bottom:1},color:&quot;#BBB&quot;}).height(50)  
+          }.swipeAction({end:this.editRowInfo(item,index)})  
+        })  
+      }.height(&quot;95%&quot;)  
+    }  
+  }
+}
+</code></pre>
+<p>其中，由於在搜索框内引用了網絡資源，所以需要將應用的網絡訪問權限打開</p>
+<p>在 module.json5 文件中為 module 添加如下内容</p>
+<pre><code class="lang-json">&quot;requestPermissions&quot;: [  
+  {  
+    &quot;name&quot;: &quot;ohos.permission.INTERNET&quot;  
+  }  
+],
+</code></pre>
+<h4 id="列表分組組件">列表分組組件</h4>
+<pre><code class="lang-typescript">class GroupList{  
+  groupName:string  
+  groupArray:Array&lt;string&gt;  
+}  
+  
+@Component  
+export default struct Test17{  
+  
+  @State  
+  student:Array&lt;GroupList&gt; = [  
+      {  
+        groupName:&quot;1&quot;,  
+        groupArray:[&quot;1a&quot;,&quot;1b&quot;,&quot;1c&quot;,&quot;1d&quot;,&quot;1e&quot;,&quot;1f&quot;]  
+      },  
+      {  
+        groupName:&quot;2&quot;,  
+        groupArray:[&quot;2a&quot;,&quot;2b&quot;,&quot;2c&quot;,&quot;2d&quot;,&quot;2e&quot;,&quot;2f&quot;]  
+      },  
+      {  
+        groupName:&quot;3&quot;,  
+        groupArray:[&quot;3a&quot;,&quot;3b&quot;,&quot;3c&quot;,&quot;3d&quot;,&quot;3e&quot;,&quot;3f&quot;]  
+      }  
+    ]  
+  
+  @State  
+  openArray:Array&lt;Boolean&gt; = [true, true, true]  
+  
+  @Builder  
+  groupBar(item:GroupList, index:number){  
+    Row(){  
+      Text(item.groupName)  
+    }.backgroundColor(&quot;#FDBB&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+    .margin({bottom:10}).onClick(() =&gt; {  
+      this.openArray[index] = !this.openArray[index]  
+    })  
+  }  
+  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;分组统计&quot;).fontColor(&quot;#FFF&quot;).fontSize(20)  
+      }.backgroundColor(&quot;#F661&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      List(){  
+        ForEach(this.student, (groupItem, groupIndex) =&gt; {  
+          ListItemGroup({header:this.groupBar(groupItem,groupIndex)}){  
+            if(this.openArray[groupIndex]){  
+              ForEach(groupItem.groupArray, (item, index) =&gt; {  
+                ListItem(){  
+                  Row(){  
+                    Text(index.toString())  
+                    Text(item)  
+                  }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+                  // .border({width:{bottom:1},color:&quot;#AAA&quot;})  
+                }  
+              })  
+            }  
+          }// .divider({strokeWidth:1, color:&quot;#AAA&quot;})  
+        })  
+      }.height(&quot;95%&quot;)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h3 id="佈局控件">佈局控件</h3>
+<h4 id="層曡佈局組件">層曡佈局組件</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test18{  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;层叠布局&quot;).fontSize(20).fontColor(&quot;#FFF&quot;)  
+      }.backgroundColor(&quot;#FA11&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Scroll(){  
+  
+        Column(){  
+          Stack(){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+  
+          Stack({alignContent:Alignment.Start}){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+  
+          Stack({alignContent:Alignment.End}){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+  
+          Stack({alignContent:Alignment.Top}){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+  
+          Stack({alignContent:Alignment.Bottom}){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+  
+          Stack({alignContent:Alignment.TopStart}){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+  
+          Stack({alignContent:Alignment.TopEnd}){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+  
+          Stack({alignContent:Alignment.BottomStart}){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+  
+          Stack({alignContent:Alignment.BottomEnd}){  
+            Circle().width(150).height(150).colorBlend(&quot;#F00&quot;)  
+            Circle().width(100).height(100).colorBlend(&quot;#fbea&quot;)  
+            Circle().width(50).height(50).colorBlend(&quot;#f59a&quot;)  
+          }  
+        }      }.height(&quot;95%&quot;)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>這一段可謂是對stack的使用列出了非常詳盡的展示啊😂</p>
+<p>元素重叠位置可以參考Alignment后屬性名的字面意思</p>
+<h4 id="網格佈局組件">網格佈局組件</h4>
+<pre><code class="lang-typescript">class StudentInfo{  
+  id:string  
+  name:string  
+  email:string  
+}  
+@Component  
+export default struct Test19{  
+  @State  
+  studentArray:Array&lt;StudentInfo&gt; = [  
+    {id:&quot; 1 &quot;,name:&quot; zhangsan1 &quot;,email:&quot; zhangsan1@qq.com &quot;},  
+    {id:&quot; 2 &quot;,name:&quot; zhangsan2 &quot;,email:&quot; zhangsan2@qq.com &quot;},  
+    {id:&quot; 3 &quot;,name:&quot; zhangsan3 &quot;,email:&quot; zhangsan3@qq.com &quot;},  
+    {id:&quot; 4 &quot;,name:&quot; zhangsan4 &quot;,email:&quot; zhangsan4@qq.com &quot;},  
+    {id:&quot; 5 &quot;,name:&quot; zhangsan5 &quot;,email:&quot; zhangsan5@qq.com &quot;},  
+    {id:&quot; 6 &quot;,name:&quot; zhangsan6 &quot;,email:&quot; zhangsan6@qq.com &quot;},  
+    {id:&quot; 7 &quot;,name:&quot; zhangsan7 &quot;,email:&quot; zhangsan7@qq.com &quot;},  
+    {id:&quot; 8 &quot;,name:&quot; zhangsan8 &quot;,email:&quot; zhangsan8@qq.com &quot;},  
+    {id:&quot; 9 &quot;,name:&quot; zhangsan9 &quot;,email:&quot; zhangsan9@qq.com &quot;},  
+  ]  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;网格布局&quot;).fontColor(&quot;#fff&quot;).fontSize(20)  
+      }.width(&quot;100%&quot;).justifyContent(FlexAlign.Center).backgroundColor(&quot;#f9c0&quot;).padding(10)  
+  
+      Search({placeholder:&quot;请输入条件&quot;}).padding(10)  
+  
+      Grid(){  
+        ForEach(this.studentArray, (item:StudentInfo, index) =&gt; {  
+          GridItem(){  
+            Column(){  
+              Row(){  
+                Text(&quot;编号&quot;)  
+                Text(item.id)  
+              }.width(130).justifyContent(FlexAlign.SpaceBetween).padding(10)  
+  
+              Row(){  
+                Text(&quot;姓名&quot;)  
+                Text(item.name)  
+              }.width(130).justifyContent(FlexAlign.SpaceBetween).padding(10)  
+  
+              Row(){  
+                Text(&quot;邮箱&quot;)  
+                Text(item.email).fontSize(7)  
+              }.width(130).justifyContent(FlexAlign.SpaceBetween).padding(10)  
+  
+            }.width(130).height(140).border({width:1}).margin({bottom:10})  
+            .justifyContent(FlexAlign.SpaceAround)  
+          }  
+        })  
+      }.height(&quot;90%&quot;).columnsTemplate(&quot;1fr 1fr 1fr&quot;)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>對於某人來説，網格佈局是個人開發時最愛用的，這是因爲grid不僅能夠快速劃分出大致定位區域，還很適合進行響應式佈局</p>
+<p>不過在ArkUI中，單純的Grid和GridItem不太能快速做出類似WPF一樣靈活的分塊操作</p>
+<p>例如，Grid對不同格的劃分是以“fr”為單位，從IDE自帶API Reference中推測，似乎只能做到根據數值等分，無法限定其中一部分然後令其他按比例劃分</p>
+<h4 id="側面工具條">側面工具條</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test20{  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;侧面工具栏&quot;).fontSize(20).fontColor(&quot;#fff&quot;)  
+      }.backgroundColor(&quot;#f182&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      SideBarContainer(SideBarContainerType.Overlay){  
+        Column(){  
+          Text(&quot;用户管理&quot;)  
+          Text(&quot;角色管理&quot;)  
+          Text(&quot;配置管理&quot;)  
+          Text(&quot;日志管理&quot;)  
+        }.backgroundColor(Color.Gray).justifyContent(FlexAlign.SpaceEvenly)  
+  
+        Column(){  
+          Text(&quot;内容显示 内容显示 内容显示 内容显示 内容显示 内容显示&quot;)  
+        }.height(&quot;100%&quot;).justifyContent(FlexAlign.Center)  
+      }.height(&quot;100%&quot;).minSideBarWidth(50).sideBarWidth(90).maxSideBarWidth(150)  
+      .showSideBar(false)  
+      .controlButton({top:10,left:10})  
+      .sideBarPosition(SideBarPosition.End)  
+      .autoHide(false)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="路由表組件">路由表組件</h4>
+<pre><code class="lang-typescript">import router from '@ohos.router'  
+@Component  
+export default struct Test21{  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;路由表&quot;).fontColor(&quot;#fff&quot;).fontSize(20)  
+      }.backgroundColor(&quot;#f290&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Row(){  
+        Navigator({target:&quot;pages/UserPage&quot;}){  
+          Text(&quot;用户管理&quot;)  
+        }  
+  
+        Navigator({target:&quot;pages/RolePage&quot;,type:NavigationType.Replace}){  
+          Text(&quot;角色管理&quot;)  
+        }  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Row(){  
+        Button(&quot;用户管理&quot;).onClick(() =&gt; {  
+          router.pushUrl({url:&quot;pages/UserPage&quot;})  
+        })  
+  
+        Button(&quot;角色管理&quot;).onClick(() =&gt; {  
+          router.replaceUrl({url:&quot;pages/RolePage&quot;})  
+        })  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<p>頁面跳轉是非常重要的功能，該示例展示了 Navigator 的用法</p>
+<p>可以看到，Navigator 實現跳轉的邏輯還是使用一個棧來管理路由中的頁面，默認就是將 target 所指的頁面直接壓入棧，這一點做法和 Android 以及 xamarin 采用的策略都是基本一致的</p>
+<p>在目錄中新建兩個 page 如下</p>
+<pre><code class="lang-typescript">import router from '@ohos.router'  
+@Entry  
+@Component  
+struct RolePage {  
+  @State message: string = '角色管理'  
+  
+  build() {  
+    Column(){  
+      Row(){  
+        Row(){  
+          Text(&quot;角色管理&quot;).fontSize(20).fontColor(&quot;#fff&quot;).margin({right:20})  
+            .onClick(() =&gt; {  
+              router.back()  
+            })  
+        }.flexGrow(1).justifyContent(FlexAlign.Center)  
+  
+      }.backgroundColor(&quot;#ff0&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Text(this.message).fontSize(50).fontWeight(&quot;100%&quot;)  
+    }  
+  }}
+</code></pre>
+<pre><code class="lang-typescript">import router from '@ohos.router'  
+@Entry  
+@Component  
+struct UserPage {  
+  @State message: string = '用户管理'  
+  
+  build() {  
+    Column(){  
+      Row(){  
+        Row(){  
+          Text(&quot;用户管理&quot;).fontSize(20).fontColor(&quot;#fff&quot;).margin({right:20})  
+            .onClick(() =&gt; {  
+              router.back()  
+            })  
+        }.flexGrow(1).justifyContent(FlexAlign.Center)  
+  
+      }.backgroundColor(&quot;#ff0&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+  
+      Text(this.message).fontSize(50).fontWeight(&quot;100%&quot;)  
+    }  
+  }}
+</code></pre>
+<p>此時查看 entry/src/main/resources/base/profile 中的 main_pages.json 内容</p>
+<pre><code class="lang-json">{  
+  &quot;src&quot;: [  
+    &quot;pages/Index&quot;,  
+    &quot;pages/UserPage&quot;,  
+    &quot;pages/RolePage&quot;  
+  ]  
+}
+</code></pre>
+<p>可以看到新頁面的 URI 已經被自動添加到 src 下了，這裏就是 target 需要指向的路徑了</p>
+<h2 id="個人總結吐槽">個人總結（吐槽）</h2>
+<p>將近一周的開發，差不多也認識了ArkUI的基本使用邏輯了</p>
+<p>不管某人是否認同，但是ArkUI確實有便捷之處</p>
+<p>可以很明顯地感覺到，在使用ArkUI的時候，很多的控件的屬性和方法都具有較高的共性，甚至某人原本第一反應是使用模型綁定加自寫方法實現的邏輯也可以找到封裝好的基本方法。不是説明其豐富性高，某人猜測可能是將UI都以一塊在熒幕上渲染的圖形為基礎，而不是將其作爲類的結果。這樣的優勢也非常明顯——就算某人現在認識的控件不多，也可以把一個基本方法套用在很多不認識或者功能看上去完全沒關係的控件上（就算實在不行了，那不還有擴展方法和模型綁定麽😂）</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY04.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
