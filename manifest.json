@@ -138,6 +138,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY06.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY06.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "notes/index.md",
       "output": {
         ".html": {
