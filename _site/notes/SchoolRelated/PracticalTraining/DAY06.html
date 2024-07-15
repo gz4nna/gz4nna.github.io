@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>暑期實訓 其之六 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="暑期實訓 其之六 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY06.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="暑期實訓-其之六">暑期實訓 其之六</h1>
+
+<h2 id="前言">前言</h2>
+<p>接<a href="./DAY05.html">上文</a></p>
+<p>第六天</p>
+<h2 id="主要内容">主要内容</h2>
+<h4 id="自定義對話框">自定義對話框</h4>
+<pre><code class="lang-typescript">@CustomDialog  
+struct DialogUi{  
+  controller:CustomDialogController  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;角色分配&quot;)  
+      }  
+  
+      Divider().margin(10)  
+  
+      Column(){  
+        Row(){  
+          Checkbox()  
+          Text(&quot;管理员&quot;)  
+        }.width(150)  
+  
+        Row(){  
+          Checkbox()  
+          Text(&quot;开发人员&quot;)  
+        }.width(150)  
+  
+        Row(){  
+          Checkbox()  
+          Text(&quot;调试人员&quot;)  
+        }.width(150)  
+      }  
+  
+      Divider().margin(10)  
+  
+      Row(){  
+        Button(&quot;确定&quot;).onClick(() =&gt; {  
+          AlertDialog.show({message:&quot;登录成功&quot;})  
+        })  
+        Button(&quot;取消&quot;).onClick(() =&gt; {  
+          this.controller.close()  
+        })  
+      }.width(200).justifyContent(FlexAlign.SpaceBetween)  
+    }.padding(10)  
+  }  
+}  
+  
+@Component  
+export default struct Test29{  
+  
+  controller:CustomDialogController = new CustomDialogController({  
+    builder:DialogUi()  
+  })  
+  build(){  
+    Button(&quot;打开对话框&quot;).onClick(() =&gt; {  
+      this.controller.open()  
+    })  
+  }  
+}
+</code></pre>
+<h4 id="屬性動畫">屬性動畫</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test30{  
+  
+  @State  
+  cWidth:number = 80  
+  
+  @State  
+  angle:number = 0  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;属性动画&quot;).fontColor(&quot;#fff&quot;).fontSize(20)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center).backgroundColor(&quot;#f671&quot;)  
+  
+      Column(){  
+  
+        Row().width(this.cWidth).height(this.cWidth).backgroundColor(&quot;#f00&quot;).margin(20)  
+          .borderRadius(this.cWidth).onClick(() =&gt; {  
+          if(this.cWidth === 80){  
+            this.cWidth *= 4  
+          }  
+          else{  
+            this.cWidth = 80  
+          }  
+        }).animation({  
+          duration:2000,  
+          playMode:PlayMode.Alternate,  
+          curve:Curve.EaseInOut,  
+          iterations:-1  
+        })  
+  
+        Row().width(100).height(10).backgroundColor(&quot;#f0f&quot;).rotate({angle:this.angle})  
+          .onClick(() =&gt; {  
+            this.angle += 180  
+          })  
+          .animation({  
+            duration:2000,  
+            playMode:PlayMode.Normal,  
+            curve:Curve.EaseInOut,  
+            iterations:-1  
+          })  
+  
+        Row().width(100).height(10).backgroundColor(&quot;#f182&quot;).rotate({angle:this.angle,y:200})  
+          .onClick(() =&gt; {  
+            this.angle += 180  
+          })  
+          .animation({  
+            duration:2000,  
+            playMode:PlayMode.Normal,  
+            curve:Curve.EaseInOut,  
+            iterations:-1  
+          })  
+  
+        Row().width(100).height(10).backgroundColor(&quot;#fba1&quot;).rotate({angle:this.angle,x:200})  
+          .onClick(() =&gt; {  
+            this.angle += 180  
+          })  
+          .animation({  
+            duration:2000,  
+            playMode:PlayMode.Normal,  
+            curve:Curve.EaseInOut,  
+            iterations:-1  
+          })  
+  
+      }.flexGrow(1).justifyContent(FlexAlign.SpaceEvenly)  
+  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="顯示動畫">顯示動畫</h4>
+<pre><code class="lang-typescript">@Component  
+export default struct Test31{  
+  @State diceImage:Resource = $r(&quot;app.media.app_icon&quot;)  
+  @State imageArray:Array&lt;Resource&gt; = [$r(&quot;app.media.app_icon&quot;),$r(&quot;app.media.app_icon&quot;),$r(&quot;app.media.app_icon&quot;),$r(&quot;app.media.app_icon&quot;)]  
+  @State angle:number = 0  
+  @State baArray:Array&lt;Resource&gt; = [$r(&quot;app.media.app_icon&quot;),$r(&quot;app.media.app_icon&quot;),$r(&quot;app.media.app_icon&quot;),$r(&quot;app.media.app_icon&quot;)]  
+  @State baImage:Resource =$r(&quot;app.media.app_icon&quot;)  
+  @State baIndex:number = 0  
+  @State marginRight:number=0  
+  random(){  
+    setTimeout(()=&gt;{  
+      this.random()  
+      var random = Math.random()*6  
+      var index = parseInt(random.toString())  
+      animateTo({playMode:PlayMode.Normal,  
+        iterations:index+1,  
+        curve:Curve.EaseInOut,  
+        duration:1000},()=&gt;{  
+        this.diceImage = this.imageArray[index]  
+        this.marginRight += 100  
+      })  
+    },1000)  
+  }  
+  ba(){  
+    setTimeout(()=&gt;{  
+      this.ba()  
+      this.baIndex++  
+      if (this.baIndex&gt;8) {  
+        this.baIndex = 0  
+      }  
+      animateTo({  
+        playMode:PlayMode.Normal,  
+        iterations:this.baIndex+1,  
+        curve:Curve.EaseInOut,  
+        duration:500  
+      },()=&gt;{  
+        this.baImage=this.baArray[this.baIndex]  
+        this.marginRight += 5  
+        if (this.marginRight&gt;200) {  
+          this.marginRight = 0  
+        }  
+      })  
+    },500)  
+  }  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;显示动画&quot;).fontSize(20).fontColor(&quot;#FFF&quot;)  
+      }.width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+      .backgroundColor(&quot;#ff173c86&quot;)  
+      Row(){  
+        Image(this.diceImage).width(50).rotate({angle:this.angle,y:200})  
+      }.flexBasis(100).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+      Row(){  
+        Button(&quot;摇骰子&quot;).onClick(()=&gt;{  
+          this.random()  
+        })  
+      }  
+      Row(){  
+        Image(this.baImage).width(150).margin({right:this.marginRight})  
+      }.flexBasis(200).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.End)  
+      .backgroundColor(&quot;#f00&quot;)  
+      Row(){  
+        Button(&quot;孙悟空&quot;).onClick(()=&gt;{  
+          this.ba()  
+        })  
+      }  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="轉場動畫">轉場動畫</h4>
+<pre><code class="lang-typescript">import router from '@ohos.router'  
+@Component  
+export default struct Test32{  
+  @State myOpacity:number = 1  
+  
+  pageTransition(){  
+    PageTransitionEnter({  
+      duration:500,  
+      curve:Curve.EaseIn  
+    }).onEnter((type: RouteType, progress: number) =&gt; {  
+      this.myOpacity = progress  
+    })  
+    PageTransitionExit({  
+      duration:500,  
+      curve:Curve.EaseOut  
+    }).onExit((type: RouteType, progress: number) =&gt; {  
+      this.myOpacity = 1 - progress  
+    })  
+  }  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;转场动画&quot;).fontColor(&quot;#FFF&quot;).fontSize(20).fontWeight(700)  
+      }.backgroundColor(&quot;#ff257e38&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Column(){  
+        Button(&quot;汽车之家&quot;).onClick(()=&gt;{  
+          router.pushUrl({url:&quot;pages/CarHomePage&quot;})  
+        })  
+  
+        Button(&quot;教师之家&quot;).onClick(()=&gt;{  
+          router.pushUrl({url:&quot;pages/TeacherHomePage&quot;})  
+        })  
+      }.flexGrow(1).justifyContent(FlexAlign.SpaceEvenly).opacity(this.myOpacity)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="插槽注解">插槽注解</h4>
+<pre><code class="lang-typescript">import StudentInfo from &quot;../models/StudentInfo&quot;  
+@Component  
+struct ListInfo{  
+  @Link list:Array&lt;StudentInfo&gt;  
+  @BuilderParam title:()=&gt;void  
+  @BuilderParam showListItem:(data:StudentInfo,index?:number)=&gt;void  
+  build(){  
+    Column() {  
+      Row(){  
+        this.title()  
+      }.width(&quot;100%&quot;).padding(10)  
+      List() {  
+        ForEach(this.list, (item: StudentInfo, index) =&gt; {  
+          ListItem() {  
+            this.showListItem(item,index)  
+          }  
+        })  
+      }  
+    }  }}  
+  
+@Component  
+export default struct Test33{  
+  @State  
+  list:Array&lt;StudentInfo&gt; = [  
+    {name:&quot;张三&quot;,mobile:&quot;123564678&quot;},  
+    {name:&quot;李四&quot;,mobile:&quot;156786464&quot;},  
+    {name:&quot;王五&quot;,mobile:&quot;194564634&quot;},  
+  ]  
+  
+  @Builder  
+  titleShow(){  
+    Row(){  
+      Text(&quot;标题&quot;).fontColor(&quot;#FFF&quot;).fontSize(20).fontWeight(700)  
+    }.backgroundColor(&quot;#ff4def12&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  }  
+  
+  @Builder  
+  LItemShow(item:StudentInfo,index:number){  
+    if(index % 2 === 0){  
+      Row(){  
+        Text(index.toString())  
+        Text(item.name).fontSize(20)  
+        Text(item.mobile).fontSize(20)  
+      }.width(&quot;100%&quot;).justifyContent(FlexAlign.SpaceBetween).backgroundColor(&quot;#EEE&quot;).padding(10)  
+    }else{  
+      Row(){  
+        Text(index.toString())  
+        Text(item.name).fontSize(20)  
+        Text(item.mobile).fontSize(20)  
+      }.width(&quot;100%&quot;).justifyContent(FlexAlign.SpaceBetween).backgroundColor(&quot;#EE0&quot;).padding(10)  
+    }  
+  }  
+  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;插槽注解&quot;).fontColor(&quot;#FFF&quot;).fontSize(20).fontWeight(700)  
+      }.backgroundColor(&quot;#ff12deef&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      ListInfo({list:$list,title:this.titleShow,showListItem:this.LItemShow})  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+<h4 id="插槽對話框">插槽對話框</h4>
+<pre><code class="lang-typescript">@CustomDialog  
+struct DialogUI{  
+  @Prop title:string  
+  @BuilderParam body:()=&gt;void  
+  confirmAction:()=&gt;void  
+  dialogControl:CustomDialogController  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(this.title).fontSize(20).fontColor(&quot;#FFF&quot;)  
+      }.backgroundColor(&quot;#fff30dba&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+      this.body()  
+      Row(){  
+        Button(&quot;确认&quot;).onClick(()=&gt;{  
+          this.confirmAction()  
+        })  
+        Button(&quot;取消&quot;).onClick(()=&gt;{  
+          this.dialogControl.close()  
+        })  
+      }.width(200).padding(10).justifyContent(FlexAlign.SpaceBetween)  
+    }.padding(10)  
+  }  
+}  
+  
+@Component  
+export default struct Test34{  
+  dialogControl:CustomDialogController = new CustomDialogController({  
+    builder:DialogUI({  
+      title:&quot;分配角色&quot;,  
+      body:this.dialogBody,  
+      confirmAction:()=&gt;{  
+        AlertDialog.show({message:&quot;分配角色失败&quot;})  
+      }  
+    })  
+  })  
+  
+  @Builder  
+  dialogBody(){  
+    Column(){  
+      Row(){  
+        Checkbox()  
+        Text(&quot;用户管理&quot;)  
+      }  
+  
+      Row(){  
+        Checkbox()  
+        Text(&quot;角色管理&quot;)  
+      }  
+  
+      Row(){  
+        Checkbox()  
+        Text(&quot;配置管理&quot;)  
+      }  
+    }  }  
+  build(){  
+    Column(){  
+      Row(){  
+        Text(&quot;尾随闭合函数&quot;).fontColor(&quot;#FFF&quot;).fontSize(20).fontWeight(700)  
+      }.backgroundColor(&quot;#fff30dba&quot;).width(&quot;100%&quot;).padding(10).justifyContent(FlexAlign.Center)  
+  
+      Column(){  
+        Button(&quot;打开&quot;).onClick(()=&gt;{  
+          this.dialogControl.open()  
+        })  
+      }.flexGrow(1)  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+  }  
+}
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY06.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
