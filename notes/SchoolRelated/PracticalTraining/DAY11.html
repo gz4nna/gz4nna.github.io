@@ -1,0 +1,694 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>暑期實訓 其之十一 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="暑期實訓 其之十一 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY11.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="暑期實訓-其之十一">暑期實訓 其之十一</h1>
+
+<h2 id="前言">前言</h2>
+<p><strong>涉及的想法僅為個人觀點，甚至日後會修改也不一定，請務必批判而不是認同</strong></p>
+<p>從第三周開始，需要運用此前通過示例學會的組件知識</p>
+<p>機構提供了一個學習平臺，並同步提供一系列api供調用，現在需要開發一個應用對接該平臺，稱作雲課堂項目</p>
+<p>需要擁有的story如下</p>
+<table>
+<thead>
+<tr>
+<th>Story编号</th>
+<th>Story模块</th>
+<th>Story名称</th>
+<th>story描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>用户模块</td>
+<td>用户登录</td>
+<td>用户名、密码、验证滑动</td>
+</tr>
+<tr>
+<td>2</td>
+<td>用户模块</td>
+<td>用户注册</td>
+<td>邮箱、验证码、用户密码、确认密码</td>
+</tr>
+<tr>
+<td>3</td>
+<td>用户模块</td>
+<td>忘记密码</td>
+<td>邮箱、验证码、用户密码、确认密码</td>
+</tr>
+<tr>
+<td>4</td>
+<td>课程模块</td>
+<td>全部课程</td>
+<td>公开课程和定制课程(学生和班级、课程相关联)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>课程模块</td>
+<td>公开课程</td>
+<td>公开课程</td>
+</tr>
+<tr>
+<td>6</td>
+<td>课程模块</td>
+<td>定制课程</td>
+<td>定制课程(学生和班级、课程关联)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>课程模块</td>
+<td>课程目录</td>
+<td>章节和计划，计划下可以关联视频、文档</td>
+</tr>
+<tr>
+<td>8</td>
+<td>课程模块</td>
+<td>课程评价</td>
+<td>5星评分、点赞、留言</td>
+</tr>
+<tr>
+<td>9</td>
+<td>课程模块</td>
+<td>我的笔记</td>
+<td>课程、学生相关联，留言</td>
+</tr>
+<tr>
+<td>10</td>
+<td>课程模块</td>
+<td>视频播放</td>
+<td>全屏、开始、暂停、进度条</td>
+</tr>
+<tr>
+<td>11</td>
+<td>课程模块</td>
+<td>文档预览</td>
+<td>文档预览</td>
+</tr>
+<tr>
+<td>12</td>
+<td>班级模块</td>
+<td>全部班级</td>
+<td>公开班级、我的班级((学生和班级相关联)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>班级模块</td>
+<td>我的班级</td>
+<td>我的班级((学生和班级相关联)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>班级模块</td>
+<td>班级详情</td>
+<td>班主任、学员数量、班级简介、班级名称、加入班级</td>
+</tr>
+<tr>
+<td>15</td>
+<td>我的模块</td>
+<td>个人列表</td>
+<td>个人图标、用户名、班级名称、二维码、学习计划、测评记录、学习记录、证书、机构注册与服务协议、班级信息处置规范、隐私政策、常见问题</td>
+</tr>
+<tr>
+<td>16</td>
+<td>我的模块</td>
+<td>修改人个信息</td>
+<td>修改 用户名称、邮箱、电话、昵称</td>
+</tr>
+</tbody>
+</table>
+<h2 id="主要内容">主要内容</h2>
+<h3 id="總體設計">總體設計</h3>
+<h4 id="應用結構">應用結構</h4>
+<p>某人打算沿用此前使用MAUI進行安卓開發時候的思路，使用MVVM模式進行前端頁面開發，并在必要時候通過發送http請求來獲取後端web api提供的各種數據來豐富展示數據</p>
+<p>想要結構合乎MVVM，除了最顯而易見的對視圖和視圖模型進行數據綁定外，需要合理設計模型。通過分析story要求，認爲所有動作均是圍繞<code>用戶</code>，<code>課程</code>，<code>班級</code>三者發出的，因此首先設計了<code>User</code>、<code>Course</code>、<code>Class</code>這三個模型，但是暫時不定義任何内容，僅作爲占位</p>
+<h4 id="設計思想">設計思想</h4>
+<p>應前端後端化趨勢，這裏嘗試通過story描述功能對所有動作進行領域劃分</p>
+<p>但是認爲在此處使用領域思想不夠合適，因爲各個部分雖然在代碼上可以視作獨立的塊，但是在邏輯上關係緊密。比如：不管是課程還是班級，總得依賴於用戶才行</p>
+<p>最後我認爲合適的方式是使用一個單例來存放必要資源，所有模塊各自代碼獨立，通過到該統一資源存放點自取所需必要内容來支持自己的運行，這種方式在當前場景下兼顧了效率和便捷性</p>
+<h3 id="前期工作">前期工作</h3>
+<p>決定好了總體的方向后，開始著手準備前期的工作</p>
+<h4 id="資源管理容器">資源管理容器</h4>
+<p>這裏的資源指的是運行過程中在内存中產生的實例，通過簡單的查閲后，沒有發現 ArkTS 提供 DI 容器，這對於 MVVM 來説是非常不利的。剛好此前也提到了有統一管理資源的需求，所以嘗試構造以下類型：</p>
+<pre><code class="lang-typescript">export default class ServiceContainHelper {  
+  private static instances: Map&lt;string, any&gt; = new Map();  
+  
+  static register&lt;T&gt;(key: string, instance: T) {  
+    this.instances.set(key, instance);  
+  }  
+  
+  static resolve&lt;T&gt;(key: string): T {  
+    return this.instances.get(key);  
+  }  
+  
+  static contain(key: string): boolean {  
+    return this.instances.has(key);  
+  }  
+  
+  static remove(key: string) {  
+    this.instances.delete(key)  
+  }  
+}
+</code></pre>
+<p>以上類型提供了一個容器，可以通過鍵值來存放任意實例，并可以手動注冊、獲取、刪除</p>
+<p>此後的開發中，不管是依賴還是邏輯上的單例，都可以通過這個容器來進行管理</p>
+<p>弊端也很明顯，超級容易越放越多，只適合小項目這樣不嚴謹地玩，此後需要在開發時注意這個問題</p>
+<h4 id="網絡請求幫助">網絡請求幫助</h4>
+<p>由於所有數據需要從平臺提供的api獲取，所以首先實現一個幫助類，爲我們的請求提供支持：</p>
+<pre><code class="lang-typescript">import http from '@ohos.net.http'  
+  
+  
+// cloud class address  
+const BASE_ADDRESS = &quot;http://123.60.25.147:8090&quot;  
+  
+// entity of ajax format request  
+class AjaxEntity{  
+  // path of api, don't add base url and port  
+  url: string  
+  
+  // params in http request  
+  extraData: Array&lt;ExtraDataEntity&gt;  
+  
+  // function used when request success  
+  success: (data: Object) =&gt; void  
+  
+  // function used when request fail  
+  fail: (data: Object) =&gt; void  
+  
+  
+  // necessary need url and extraData  
+  constructor(url: string,extraData:  
+    Array&lt;ExtraDataEntity&gt;,success:(data:Object)=&gt;void,fail:(data:Object)=&gt;void) {  
+    this.url = url;  
+    this.extraData = extraData;  
+    this.success = success;  
+    this.fail = fail;  
+  }  
+}  
+  
+// entity of extra data  
+// when you send a http request, should take some key-value pair as ExtraDataEntity format  
+// always used like {name: &quot;key&quot;, value: value} to set a entity in other constructor  
+class ExtraDataEntity{  
+  name: string  
+  value: string|number|boolean  
+  
+  constructor(name: string, value: string) {  
+    this.name = name  
+    this.value = value  
+  }  
+}  
+  
+// http request helper  
+export default class HttpClientHelper{  
+  
+  static send(value:AjaxEntity):Promise&lt;void&gt;{  
+    return new Promise((resolve,reject) =&gt; {  
+      HttpClientHelper.sendHttpMsg(value)  
+    })  
+  }  
+  
+  // emulate send action  
+  // return a  http response  
+  static sendHttpMsg(value: AjaxEntity) {  
+    let httpClient = http.createHttp()  
+  
+    httpClient.on('headersReceive', (header) =&gt; {  
+      console.info('header: ' + JSON.stringify(header));  
+    });  
+  
+    httpClient.request(  
+      BASE_ADDRESS + value.url,  
+      {  
+        method: http.RequestMethod.POST,  
+        header: {  
+          'Content-Type': 'application/x-www-form-urlencoded'  
+        },  
+        extraData: HttpClientHelper.changeWWWParam(value.extraData),  
+        expectDataType: http.HttpDataType.STRING,  
+        usingCache: true,  
+        priority: 1,  
+        connectTimeout: 60000,  
+        readTimeout: 60000,  
+        usingProtocol: http.HttpProtocol.HTTP1_1,  
+      }, (err, data) =&gt; {  
+        if (!err) {  
+          if(data.result){  
+            try{  
+              var rst:string = data.result.toString();  
+              value.success(JSON.parse(rst))  
+            }catch(error){  
+              console.info(&quot;error:&quot; + JSON.stringify(error));  
+            }  
+          }          else{  
+            value.success(null)  
+          }  
+        } else {  
+          value.fail(err)  
+        }  
+      httpClient.off('headersReceive');  
+      httpClient.destroy();  
+      }  
+    )  
+  }  
+  
+  // convert ExtraDataEntity type to http request param  
+  static changeWWWParam(dataArray:Array&lt;ExtraDataEntity&gt;){  
+    var rst:string = '';  
+  
+    dataArray.forEach((item)=&gt;{  
+      rst+=item.name + &quot;=&quot; + item.value + &quot;&amp;&quot;  
+    })  
+  
+    // remove last &quot;&amp;&quot;  
+    if(rst !== ''){  
+      rst = rst.substring(0, rst.length - 1)  
+    }  
+  
+    console.info(&quot;changeExtraDataWWW:&quot; + rst)  
+    return rst  
+  }  
+}
+</code></pre>
+<p>ExtraDataEntity：</p>
+<p>ExtraDataEntity 類是爲了存放置於請求中的報文參數</p>
+<p>AjaxEntity：</p>
+<p>AjaxEntity 類模擬了一個ajax請求體</p>
+<p>在最初的設計中，不僅對於所有成員，還提供了請求類型、報頭等等屬性的自定義設置，但是在長時間的對 HttpClientHelper 類的調試中最終捨棄了這些内容</p>
+<p>HttpClientHelper：</p>
+<p>HttpClientHelper 類型是負責 http 請求的幫助類</p>
+<p>在 HttpClientHelper 中提供了一個 send 方法，接受一個 AjaxEntity 類型參數，並提供對 sendHttpMsg 方法的包裝調用。這是因爲 sendHttpMsg 方法在執行時由於其異步性質會導致調試時很難看到執行結果，封裝后可以通過 async/await 來方便地等待執行結束后進行下一步的調試</p>
+<blockquote>
+<p>一開始某人認爲可以將 ExtraDataEntity 和 AjaxEntity 獨立放在其他文件夾中進行進一步的結構管理，但是很遺憾的是會出現衆多不可名狀的錯誤，最後發現使用單文件可以一勞永逸杜絕各種問題</p>
+</blockquote>
+<h3 id="開始開發">開始開發</h3>
+<p>測試部分省略后，接下來快速開發出模板，作爲後續所有開發的依據</p>
+<h4 id="model-模板">model 模板</h4>
+<pre><code class="lang-typescript">import IUser from &quot;./IUser&quot;  
+import UserInfo from './UserInfo'  
+  
+@Observed  
+export default class User implements IUser{  
+  userUuid:string  
+  userInfo:UserInfo  
+}
+</code></pre>
+<p>按照下面規則編寫</p>
+<ul>
+<li>在接口中確保只聲明最重要的内容</li>
+<li>在主要 model 類中按照最直觀的邏輯設計</li>
+<li>能封裝成類就不要直接使用字段，這利好後續變更</li>
+</ul>
+<h4 id="viewmodel-模板">viewmodel 模板</h4>
+<pre><code class="lang-typescript">import router from '@ohos.router';  
+import HttpClientHelper from '../../helpers/HttpClientHelper';  
+import ServiceContainHelper from '../../helpers/ServiceContainHelper';  
+import ForgetPasswordMsg from '../../misc/ForgetPasswordMsg';  
+import LoginMsg from '../../misc/LoginMsg';  
+import RegisterUserMsg from '../../misc/RegisterUserMsg';  
+import User from '../models/User';  
+import UserInfo from '../models/UserInfo';  
+  
+  
+@Observed  
+export default class LoginPageViewModel{  
+  
+  /*  
+   * status flags   
+   * */  
+   
+  // user login status, false is not login yet  
+  // must put instance into service container before change to true  
+  // must route into index page after change to true  
+  statusFlagUserLoginStatus: boolean = false  
+  public get StatusFlagUserLoginStatus(): boolean {  
+    return this.statusFlagUserLoginStatus;  
+  }  
+  public set StatusFlagUserLoginStatus(value:boolean) {  
+    ServiceContainHelper.register(&quot;user&quot;,this.user)  
+    ServiceContainHelper.register(&quot;userInfo&quot;,this.userInfo)  
+    this.statusFlagUserLoginStatus = value  
+    router.back()  
+  }  
+  
+  /*  
+   * request params   
+   * */  
+  
+  // user name for user login  requestParamUserLoginFunctionParamUserName: string = &quot;&quot;  
+  public get RequestParamUserLoginFunctionParamUserName(): string {  
+    return this.requestParamUserLoginFunctionParamUserName  
+  }  
+  public set RequestParamUserLoginFunctionParamUserName(value: string) {  
+    this.requestParamUserLoginFunctionParamUserName = value  
+  }  
+  
+  // user password for user login  
+  requestParamUserLoginFunctionParamPassword: string = &quot;&quot;  
+  public get RequestParamUserLoginFunctionParamPassword(): string {  
+    return this.requestParamUserLoginFunctionParamPassword  
+  }  
+  public set RequestParamUserLoginFunctionParamPassword(value: string) {  
+    this.requestParamUserLoginFunctionParamPassword = value  
+  }  
+  
+  // email for user register  
+  requestParamUserRegisterFunctionParamEmail: string = &quot;&quot;  
+  public get RequestParamUserRegisterFunctionParamEmail(): string {  
+    return this.requestParamUserRegisterFunctionParamEmail  
+  }  
+  public set RequestParamUserRegisterFunctionParamEmail(value: string) {  
+    this.requestParamUserRegisterFunctionParamEmail = value  
+  }  
+  
+  // password for user register  
+  requestParamUserRegisterFunctionParamPassword: string = &quot;&quot;  
+  public get RequestParamUserRegisterFunctionParamPassword(): string {  
+    return this.requestParamUserRegisterFunctionParamPassword  
+  }  
+  public set RequestParamUserRegisterFunctionParamPassword(value: string) {  
+    this.requestParamUserRegisterFunctionParamPassword = value  
+  }  
+  
+  // email for forget password  
+  requestParamForgetPasswordFunctionParamEmail: string = &quot;&quot;  
+  public get RequestParamForgetPasswordFunctionParamEmail(): string {  
+    return this.requestParamForgetPasswordFunctionParamEmail  
+  }  
+  public set RequestParamForgetPasswordFunctionParamEmail(value: string) {  
+    this.requestParamForgetPasswordFunctionParamEmail = value  
+  }  
+  
+  // password for forget password  
+  requestParamForgetPasswordFunctionParamPassword: string = &quot;&quot;  
+  public get RequestParamForgetPasswordFunctionParamPassword(): string {  
+    return this.requestParamForgetPasswordFunctionParamPassword  
+  }  
+  public set RequestParamForgetPasswordFunctionParamPassword(value: string) {  
+    this.requestParamForgetPasswordFunctionParamPassword = value  
+  }  
+  
+  /*  
+   * response messages   
+   * */  
+  
+  // user login request's result  
+  // see misc/LoginMsg for detailed structure  
+  responseMessageLoginMessage: LoginMsg = new LoginMsg()  
+  public get ResponseMessageLoginMessage(): LoginMsg {  
+    return this.responseMessageLoginMessage  
+  }  
+  public set ResponseMessageLoginMessage(value: LoginMsg) {  
+    this.responseMessageLoginMessage = value  
+  }  
+  
+  // user register request's result  
+  // see misc/RegisterUserMsg for detailed structure  
+  responseMessageRegisterMessage: RegisterUserMsg = new RegisterUserMsg()  
+  public get ResponseMessageRegisterMessage(): RegisterUserMsg {  
+    return this.responseMessageRegisterMessage  
+  }  
+  public set ResponseMessageRegisterMessage(value: RegisterUserMsg) {  
+    this.responseMessageRegisterMessage = value  
+  }  
+  
+  // forget password request's result  
+  // see misc/ForgetPasswordMsg for detailed structure  
+  responseMessageForgetPasswordMessage: ForgetPasswordMsg = new ForgetPasswordMsg()  
+  public get ResponseMessageForgetPasswordMessage(): ForgetPasswordMsg {  
+    return this.responseMessageForgetPasswordMessage  
+  }  
+  public set ResponseMessageForgetPasswordMessage(value: ForgetPasswordMsg) {  
+    this.responseMessageForgetPasswordMessage = value  
+  }  
+  
+  //  
+  
+  /*   
+  * models   
+  * */  
+  
+  user: User = new User()  
+  userInfo: UserInfo = new UserInfo()  
+  
+  
+  // login function  
+  async UserLoginFunction(){  
+    await HttpClientHelper.send({  
+      url:&quot;/api/user/login&quot;,  
+      extraData:[  
+        {name:&quot;userName&quot;,value:this.RequestParamUserLoginFunctionParamUserName},  
+        {name:&quot;password&quot;,value:this.RequestParamUserLoginFunctionParamPassword}  
+      ],  
+      success:(data:LoginMsg) =&gt; {  
+        this.ResponseMessageLoginMessage = data  
+      },  
+      fail:() =&gt; {}  
+    })  
+  }  
+  
+  async UserRegisterFunction(){  
+    await HttpClientHelper.send({  
+      url:&quot;/api/user/registerUserByEmail&quot;,  
+      extraData:[  
+        {name:&quot;email&quot;,value:this.RequestParamUserRegisterFunctionParamEmail},  
+        {name:&quot;password&quot;,value:this.RequestParamUserRegisterFunctionParamPassword}  
+      ],  
+      success:(data:RegisterUserMsg) =&gt; {  
+        this.ResponseMessageRegisterMessage = data  
+      },  
+      fail:() =&gt; {}  
+    })  
+  }  
+  
+  async ForgetPassword(){  
+    await HttpClientHelper.send({  
+      url:&quot;/api/user/forgetPasswdByEmail&quot;,  
+      extraData:[  
+        {name:&quot;email&quot;,value:this.RequestParamForgetPasswordFunctionParamEmail},  
+        {name:&quot;password&quot;,value:this.RequestParamForgetPasswordFunctionParamPassword}  
+      ],  
+      success:(data:RegisterUserMsg) =&gt; {  
+        this.ResponseMessageForgetPasswordMessage = data  
+      },  
+      fail:() =&gt; {}  
+    })  
+  }  
+  
+}
+</code></pre>
+<p>按照下面規則編寫</p>
+<ul>
+<li>按照功能置於不同位置，在顯眼処劃分</li>
+<li>盡量添加描述性注釋，就算是很直觀的内容</li>
+<li>命名盡量按照：主要涉及功能+主要涉及方法+主要涉及參數，杜絕簡寫縮寫</li>
+<li>對所有成員添加訪問器，在 view 中統一通過訪問器訪問</li>
+</ul>
+<h4 id="view-模板">view 模板</h4>
+<pre><code class="lang-typescript">import LoginPageViewModel from '../mvvm/viewModels/LoginPageViewModel'  
+@Entry  
+@Component  
+struct LoginPage {  
+  @State  
+  viewModel: LoginPageViewModel = new LoginPageViewModel()  
+  
+  build() {  
+    Column(){  
+      Column(){  
+        Text(&quot;邮箱&quot;)  
+        TextInput({text: this.viewModel.RequestParamUserRegisterFunctionParamEmail})  
+      }.justifyContent(FlexAlign.SpaceBetween).padding(10)  
+      Column(){  
+        Text(&quot;密码&quot;)  
+        TextInput({text: this.viewModel.RequestParamUserRegisterFunctionParamPassword})  
+      }.justifyContent(FlexAlign.SpaceBetween).padding(10)  
+      Column(){  
+        Button(&quot;注册账号&quot;).onClick(() =&gt; {  
+          this.viewModel.UserRegisterFunction()  
+        })  
+      }.justifyContent(FlexAlign.SpaceBetween).padding(10)  
+    }  
+  }}
+</code></pre>
+<p>按照下面規則編寫</p>
+<ul>
+<li>盡量只使用 viewmodel 提供的數據</li>
+</ul>
+<p>雖然這是一個 Page 例子，但是實際上其他頁面都是通過 tabs 組件在主頁上切換不同的 component 實現的，考慮到未登錄時既然不可執行其他動作那麽導航部分也應該是不可見的，所以成爲了一個特例</p>
+<p>以上的代碼編寫風格大致符合目前個人開發時所習慣性遵守的，由於在該開發環境中難免需要改變一些細節，并且合作時也需要先統一風格等各種因素，於是首先在開發的第一步完成了可以涵蓋大部分開發内容的幾個類型文件的簡單示例編寫。</p>
+<h3 id="其他工作">其他工作</h3>
+<p>除此之外，主頁的形式也大致確定了</p>
+<pre><code class="lang-typescript">import router from '@ohos.router'  
+import ClassPage from '../Components/ClassPage'  
+import CoursePage from '../Components/CoursePage'  
+import UserInfoPage from '../Components/UserInfoPage'  
+import ServiceContainHelper from '../helpers/ServiceContainHelper'  
+@Entry  
+@Component  
+struct Index {  
+  
+  @State  
+  selectIndex:number = 0  
+  control:TabsController = new TabsController()  
+  
+  @Builder  
+  tarBar(text:string, index:number){  
+    Column(){  
+      if(this.selectIndex === index) {  
+        Text(text).fontSize(20).fontColor(&quot;#f00&quot;).fontWeight(600)  
+      }  
+      else{  
+        Text(text).fontSize(20).fontWeight(600)  
+      }  
+    }.onClick(() =&gt; {  
+      this.control.changeIndex(index)  
+    })  
+  }  
+  
+  build() {  
+    Column(){  
+      // logic reverse  
+      if(!ServiceContainHelper.contain(&quot;User&quot;)){  
+        Button(&quot;请先登录&quot;).onClick(() =&gt; {  
+          router.pushUrl({url:&quot;./LoginPage&quot;})  
+        })  
+      }  
+      else{  
+        Tabs({barPosition:BarPosition.End}){  
+          TabContent() {  
+            CoursePage()  
+          }.tabBar(this.tarBar(&quot;课程&quot;, 0))  
+  
+          TabContent() {  
+            ClassPage()  
+          }.tabBar(this.tarBar(&quot;班级&quot;, 0))  
+  
+          TabContent() {  
+            UserInfoPage()  
+          }.tabBar(this.tarBar(&quot;我的&quot;, 0))  
+        }.onChange((index) =&gt; {  
+          this.selectIndex = index  
+        })  
+      }  
+    }.width(&quot;100%&quot;).height(&quot;100%&quot;)  
+    .justifyContent(FlexAlign.Center)  
+  }  
+}
+</code></pre>
+<p>得益於 tabs 組件的便捷切換，可以先將每個模塊作爲一個 component 設計，通過切換組件模擬路由功能實現跳轉。兼顧了多人開發和全局管理</p>
+<h2 id="感想與總結">感想與總結</h2>
+<p>本日主要是嘗試將常用的開發方式運用到該項目中</p>
+<p>在實際的操作時，遇到了較多的問題</p>
+<p>首先是數據綁定，在使用自帶的 對象鏈接 或者 本地存儲 功能時會遇到諸如初始化等問題，最後放棄了大部分的綁定，改爲統一存放資源加手動同步的方式，雖然原始且繁瑣，但總算實現了差不多的功能</p>
+<p>其次是網絡請求，由於默認的異步請求會導致返回包數據賦值到本地的順序晚於本地調用，導致測試時無法取出數據，但是卻顯示請求成功。當時完全沒想到異步的問題導致消磨了將近一上午的時間</p>
+<p>最後總算是都解決了並給出了一個相對可以讓所有合作者看懂的小示例。不過已有代碼沒有經過任何可行性測試，也沒有完善資源管理和模型定義相關内容，這是接下來在模塊開發之前的必要步驟</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY11.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
