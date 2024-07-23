@@ -1,0 +1,607 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>暑期實訓 其之十二 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="暑期實訓 其之十二 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY12.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="暑期實訓-其之十二">暑期實訓 其之十二</h1>
+
+<h2 id="前言">前言</h2>
+<p><strong>涉及的想法僅為個人觀點，甚至日後會修改也不一定，請務必批判而不是認同</strong></p>
+<p>接<a href="./DAY11.html">上文</a></p>
+<p>今天除了編寫一些簡單的代碼，優化項目結構，最重要的内容是對於團隊協作和組織多人項目的思考</p>
+<h2 id="主要内容">主要内容</h2>
+<p>完善 LoginViewModel</p>
+<pre><code class="lang-typescript">import router from '@ohos.router';  
+import HttpClientHelper from '../../helpers/HttpClientHelper';  
+import ServiceContainHelper from '../../helpers/ServiceContainHelper';  
+import ForgetPasswordMsg from '../../misc/ForgetPasswordMsg';  
+import LoginMsg, { LoginMsgObj } from '../../misc/LoginMsg';  
+import RegisterUserMsg from '../../misc/RegisterUserMsg';  
+import User from '../models/User';  
+import GetVerificationCodeMsg from '../../misc/GetVerificationCodeMsg';  
+  
+  
+@Observed  
+export default class LoginPageViewModel{  
+  
+  /*  
+   * status flags   
+   * */  
+  
+  // user login status, false is not login yet  
+  // must put instance into service container before change to true  
+  // must route into index page after change to true  
+  statusFlagUserLoginStatus: boolean = false  
+  public get StatusFlagUserLoginStatus(): boolean {  
+    return this.statusFlagUserLoginStatus;  
+  }  
+  public set StatusFlagUserLoginStatus(value:boolean) {  
+    ServiceContainHelper.register(&quot;User&quot;,this.user)  
+    this.statusFlagUserLoginStatus = value  
+    router.replaceUrl({  
+      url:&quot;pages/Index&quot;,  
+      params:{  
+        status: this.StatusFlagUserLoginStatus  
+      }  
+    })  
+  }  
+  
+  // user verify status  
+  // check it before user register and forget password  
+  statusFlagUserVerifyStatus: boolean = false  
+  public get StatusFlagUserVerifyStatus(): boolean {  
+    return this.statusFlagUserVerifyStatus;  
+  }  
+  public set StatusFlagUserVerifyStatus(value:boolean) {  
+    this.statusFlagUserVerifyStatus = value  
+  }  
+  
+  // slide verify status  
+  // check it before user login  
+  statusFlagSlideVerifyStatus: boolean = false  
+  public get StatusFlagSlideVerifyStatus(): boolean {  
+    return this.statusFlagSlideVerifyStatus;  
+  }  
+  public set StatusFlagSlideVerifyStatus(value:boolean) {  
+    this.statusFlagSlideVerifyStatus = value  
+  }  
+  
+  /*  
+   * request params   
+   * */  
+  
+  // user name for user login  
+  requestParamUserLoginFunctionParamUserName: string = &quot;zsjyvso8u@mozmail.com&quot;  
+  public get RequestParamUserLoginFunctionParamUserName(): string {  
+    return this.requestParamUserLoginFunctionParamUserName  
+  }  
+  public set RequestParamUserLoginFunctionParamUserName(value: string) {  
+    this.requestParamUserLoginFunctionParamUserName = value  
+  }  
+  
+  // user password for user login  
+  requestParamUserLoginFunctionParamPassword: string = &quot;123456&quot;  
+  public get RequestParamUserLoginFunctionParamPassword(): string {  
+    return this.requestParamUserLoginFunctionParamPassword  
+  }  
+  public set RequestParamUserLoginFunctionParamPassword(value: string) {  
+    this.requestParamUserLoginFunctionParamPassword = value  
+  }  
+  
+  // email for user register  
+  requestParamUserRegisterFunctionParamEmail: string = &quot;zsjyvso8u@mozmail.com&quot;  
+  public get RequestParamUserRegisterFunctionParamEmail(): string {  
+    return this.requestParamUserRegisterFunctionParamEmail  
+  }  
+  public set RequestParamUserRegisterFunctionParamEmail(value: string) {  
+    this.requestParamUserRegisterFunctionParamEmail = value  
+  }  
+  
+  // password for user register  
+  requestParamUserRegisterFunctionParamPassword: string = &quot;123456&quot;  
+  public get RequestParamUserRegisterFunctionParamPassword(): string {  
+    return this.requestParamUserRegisterFunctionParamPassword  
+  }  
+  public set RequestParamUserRegisterFunctionParamPassword(value: string) {  
+    this.requestParamUserRegisterFunctionParamPassword = value  
+  }  
+  
+  // email for forget password  
+  requestParamForgetPasswordFunctionParamEmail: string = &quot;&quot;  
+  public get RequestParamForgetPasswordFunctionParamEmail(): string {  
+    return this.requestParamForgetPasswordFunctionParamEmail  
+  }  
+  public set RequestParamForgetPasswordFunctionParamEmail(value: string) {  
+    this.requestParamForgetPasswordFunctionParamEmail = value  
+  }  
+  
+  // password for forget password  
+  requestParamForgetPasswordFunctionParamPassword: string = &quot;&quot;  
+  public get RequestParamForgetPasswordFunctionParamPassword(): string {  
+    return this.requestParamForgetPasswordFunctionParamPassword  
+  }  
+  public set RequestParamForgetPasswordFunctionParamPassword(value: string) {  
+    this.requestParamForgetPasswordFunctionParamPassword = value  
+  }  
+  
+  // email for get verification code  
+  requestParamGetVerificationCodeFunctionParamEmail: string = &quot;&quot;  
+  public get RequestParamGetVerificationCodeFunctionParamEmail(): string {  
+    return this.requestParamGetVerificationCodeFunctionParamEmail  
+  }  
+  public set RequestParamGetVerificationCodeFunctionParamEmail(value: string) {  
+    this.requestParamGetVerificationCodeFunctionParamEmail = value  
+  }  
+  
+  /*  
+   * response messages   
+   * */  
+  
+  // user login request's result  
+  // see misc/LoginMsg for detailed structure  
+  responseMessageLoginMessage: LoginMsgObj = new LoginMsgObj()  
+  public get ResponseMessageLoginMessage(): LoginMsgObj {  
+    return this.responseMessageLoginMessage  
+  }  
+  public set ResponseMessageLoginMessage(value: LoginMsgObj) {  
+    this.responseMessageLoginMessage = value  
+  }  
+  
+  // user register request's result  
+  // see misc/RegisterUserMsg for detailed structure  
+  responseMessageRegisterMessage: RegisterUserMsg = new RegisterUserMsg()  
+  public get ResponseMessageRegisterMessage(): RegisterUserMsg {  
+    return this.responseMessageRegisterMessage  
+  }  
+  public set ResponseMessageRegisterMessage(value: RegisterUserMsg) {  
+    this.responseMessageRegisterMessage = value  
+  }  
+  
+  // forget password request's result  
+  // see misc/ForgetPasswordMsg for detailed structure  
+  responseMessageForgetPasswordMessage: ForgetPasswordMsg = new ForgetPasswordMsg()  
+  public get ResponseMessageForgetPasswordMessage(): ForgetPasswordMsg {  
+    return this.responseMessageForgetPasswordMessage  
+  }  
+  public set ResponseMessageForgetPasswordMessage(value: ForgetPasswordMsg) {  
+    this.responseMessageForgetPasswordMessage = value  
+  }  
+  
+  // get verification code request's result  
+  // see misc/ForgetPasswordMsg for detailed structure  
+  responseMessageGetVerificationCodeMessage: GetVerificationCodeMsg = new GetVerificationCodeMsg()  
+  public get ResponseMessageGetVerificationCodeMessage(): GetVerificationCodeMsg {  
+    return this.responseMessageGetVerificationCodeMessage  
+  }  
+  public set ResponseMessageGetVerificationCodeMessage(value: GetVerificationCodeMsg) {  
+    this.responseMessageGetVerificationCodeMessage = value  
+  }  
+  
+  /*  
+   * user input   
+   * */  
+  
+  userInputVerificationCode: string = &quot;&quot;  
+  public get UserInputVerificationCode(): string {  
+    return this.userInputVerificationCode  
+  }  
+  public set UserInputVerificationCode(value: string) {  
+    this.userInputVerificationCode = value  
+  }  
+  
+  /*  
+   * models   
+   * */  
+  
+  user: User = new User()  
+  
+  
+  // login function  
+  async UserLoginFunction(){  
+    console.info(&quot;12138--into login&quot;)  
+    if(this.StatusFlagSlideVerifyStatus){  
+      await HttpClientHelper.send({  
+        url:&quot;/api/user/login&quot;,  
+        extraData:[  
+          {name:&quot;userName&quot;,value:this.RequestParamUserLoginFunctionParamUserName},  
+          {name:&quot;password&quot;,value:this.RequestParamUserLoginFunctionParamPassword}  
+        ],  
+        success:(data:LoginMsg) =&gt; {  
+          this.ResponseMessageLoginMessage = data.obj  
+          console.info(&quot;12138--msg:&quot;+data.msg+data.success+data.description)  
+          if(data.success){  
+            console.info(&quot;12138--info:&quot;+this.ResponseMessageLoginMessage.userUuid+this.ResponseMessageLoginMessage.email)  
+            this.user.userUuid = this.ResponseMessageLoginMessage.userUuid  
+            this.StatusFlagUserLoginStatus = true  
+          }  
+        },  
+        fail:(data:LoginMsg) =&gt; {  
+          console.info(&quot;12138--fail&quot;)  
+          console.info(&quot;12138--msg:&quot;+data.msg+data.success+data.description)  
+        }  
+      })  
+    }  
+  }  
+  
+  async UserRegisterFunction(){  
+    if(this.StatusFlagUserVerifyStatus){  
+      await HttpClientHelper.send({  
+        url:&quot;/api/user/registerUserByEmail&quot;,  
+        extraData:[  
+          {name:&quot;email&quot;,value:this.RequestParamUserRegisterFunctionParamEmail},  
+          {name:&quot;password&quot;,value:this.RequestParamUserRegisterFunctionParamPassword}  
+        ],  
+        success:(data:RegisterUserMsg) =&gt; {  
+          this.ResponseMessageRegisterMessage = data  
+          console.info(&quot;12138--&quot;+data.msg+data.success+data.description)  
+        },  
+        fail:(data:RegisterUserMsg) =&gt; {  
+          console.info(&quot;12138--fail&quot;)  
+          console.info(&quot;12138--&quot;+data.msg+data.success+data.description)  
+        }  
+      })  
+    }  
+  }  
+  
+  async ForgetPassword(){  
+    if(this.StatusFlagUserVerifyStatus){  
+      await HttpClientHelper.send({  
+        url:&quot;/api/user/forgetPasswdByEmail&quot;,  
+        extraData:[  
+          {name:&quot;email&quot;,value:this.RequestParamForgetPasswordFunctionParamEmail},  
+          {name:&quot;password&quot;,value:this.RequestParamForgetPasswordFunctionParamPassword}  
+        ],  
+        success:(data:RegisterUserMsg) =&gt; {  
+          this.ResponseMessageForgetPasswordMessage = data  
+        },  
+        fail:() =&gt; {}  
+      })  
+    }  
+  }  
+  
+  async GetVerifyCode(){  
+    await HttpClientHelper.send({  
+      url:&quot;/api/user/getVerifyCode&quot;,  
+      extraData:[  
+        {name:&quot;email&quot;,value:this.RequestParamGetVerificationCodeFunctionParamEmail}  
+      ],  
+      success:(data:GetVerificationCodeMsg) =&gt; {  
+        console.info(&quot;12138--get verify code success: &quot; + data.msg + data.success + data.description + data.code)  
+        this.ResponseMessageGetVerificationCodeMessage = data  
+      },  
+      fail:() =&gt; {}  
+    })  
+  }  
+  
+  CheckVerificationCode(){  
+    if(this.UserInputVerificationCode == this.ResponseMessageGetVerificationCodeMessage.code){  
+      this.StatusFlagUserVerifyStatus = true  
+    }  
+  }
+}
+</code></pre>
+<p>編寫 LoginViewModel</p>
+<pre><code class="lang-typescript">import HttpClientHelper from '../../helpers/HttpClientHelper'  
+import ServiceContainHelper from '../../helpers/ServiceContainHelper'  
+import GetUserInfoMsg from '../../misc/GetUserInfoMsg'  
+import UpdateUserInfoMsg from '../../misc/UpdateUserInfoMsg'  
+import User from '../models/User'  
+import UserInfo from '../models/UserInfo'  
+
+@Observed  
+export default class UserInfoPageViewModel{  
+  
+  /*  
+   * status flags   
+   * */  
+  
+  // update user info status  
+  statusFlagUpdateUserInfoStatus: boolean = false  
+  public get StatusFlagUpdateUserInfoStatus(): boolean {  
+    return this.statusFlagUpdateUserInfoStatus;  
+  }  
+  public set StatusFlagUpdateUserInfoStatus(value:boolean) {  
+    this.statusFlagUpdateUserInfoStatus = value  
+  }  
+  
+  /*  
+   * request params   
+   * */  
+  
+  // user uuid for user info  
+  requestParamUserInfoFunctionParamUserUuid: string = &quot;9b991a40-47db-11ef-ab56-fa163e0d65b3&quot;  
+  public get RequestParamUserInfoFunctionParamUserUuid(): string {  
+    return this.requestParamUserInfoFunctionParamUserUuid  
+  }  
+  public set RequestParamUserInfoFunctionParamUserUuid(value: string) {  
+    this.requestParamUserInfoFunctionParamUserUuid = value  
+  }  
+  
+  // user uuid for update user info  
+  public get RequestParamUpdateUserInfoFunctionParamUserUuid(): string {  
+    return this.requestParamUserInfoFunctionParamUserUuid  
+  }  
+  
+  // user name for update user info  
+  requestParamUpdateUserInfoFunctionParamUserName: string = &quot;&quot;  
+  public get RequestParamUpdateUserInfoFunctionParamUserName(): string {  
+    return this.requestParamUpdateUserInfoFunctionParamUserName  
+  }  
+  public set RequestParamUpdateUserInfoFunctionParamUserName(value: string) {  
+    this.requestParamUpdateUserInfoFunctionParamUserName = value  
+  }  
+  
+  // email for update user info  
+  requestParamUpdateUserInfoFunctionParamEmail: string = &quot;&quot;  
+  public get RequestParamUpdateUserInfoFunctionParamEmail(): string {  
+    return this.requestParamUpdateUserInfoFunctionParamEmail  
+  }  
+  public set RequestParamUpdateUserInfoFunctionParamEmail(value: string) {  
+    this.requestParamUpdateUserInfoFunctionParamEmail = value  
+  }  
+  
+  // mobile for update user info  
+  requestParamUpdateUserInfoFunctionParamMobile: string = &quot;&quot;  
+  public get RequestParamUpdateUserInfoFunctionParamMobile(): string {  
+    return this.requestParamUpdateUserInfoFunctionParamMobile  
+  }  
+  public set RequestParamUpdateUserInfoFunctionParamMobile(value: string) {  
+    this.requestParamUpdateUserInfoFunctionParamMobile = value  
+  }  
+  
+  // nice name for update user info  
+  requestParamUpdateUserInfoFunctionParamNiceName: string = &quot;&quot;  
+  public get RequestParamUpdateUserInfoFunctionParamNiceName(): string {  
+    return this.requestParamUpdateUserInfoFunctionParamNiceName  
+  }  
+  public set RequestParamUpdateUserInfoFunctionParamNiceName(value: string) {  
+    this.requestParamUpdateUserInfoFunctionParamNiceName = value  
+  }  
+  
+  // photo for update user info  
+  requestParamUpdateUserInfoFunctionParamPhoto: string = &quot;&quot;  
+  public get RequestParamUpdateUserInfoFunctionParamPhoto(): string {  
+    return this.requestParamUpdateUserInfoFunctionParamPhoto  
+  }  
+  public set RequestParamUpdateUserInfoFunctionParamPhoto(value: string) {  
+    this.requestParamUpdateUserInfoFunctionParamPhoto = value  
+  }  
+  
+  // dvcUuid for update user info  
+  requestParamUpdateUserInfoFunctionParamDvcUuid: string = &quot;&quot;  
+  public get RequestParamUpdateUserInfoFunctionParamDvcUuid(): string {  
+    return this.requestParamUpdateUserInfoFunctionParamDvcUuid  
+  }  
+  public set RequestParamUpdateUserInfoFunctionParamDvcUuid(value: string) {  
+    this.requestParamUpdateUserInfoFunctionParamDvcUuid = value  
+  }  
+  
+  /*  
+   * response messages   
+   * */  
+  
+  // get user info request's result  
+  // see misc/GetUserInfoMsg for detailed structure  
+  responseMessageGetUserInfoMessage: GetUserInfoMsg = new GetUserInfoMsg()  
+  public get ResponseMessageGetUserInfoMessage(): GetUserInfoMsg {  
+    return this.responseMessageGetUserInfoMessage  
+  }  
+  public set ResponseMessageGetUserInfoMessage(value: GetUserInfoMsg) {  
+    this.responseMessageGetUserInfoMessage = value  
+  
+    this.userInfo.userName = value.userName  
+    this.userInfo.email = value.email  
+    this.userInfo.mobile = value.mobile  
+    this.userInfo.niceName = value.niceName  
+    this.userInfo.photo = value.photo  
+    this.userInfo.dvcUuid = value.dvcUuid  
+  
+    // register instance after get  
+    ServiceContainHelper.register(&quot;UserInfo&quot;, this.userInfo)  
+  
+    this.RequestParamUpdateUserInfoFunctionParamUserName = value.userName  
+    this.RequestParamUpdateUserInfoFunctionParamEmail = value.email  
+    this.RequestParamUpdateUserInfoFunctionParamMobile = value.mobile  
+    this.RequestParamUpdateUserInfoFunctionParamNiceName = value.niceName  
+    this.RequestParamUpdateUserInfoFunctionParamPhoto = value.photo  
+    this.RequestParamUpdateUserInfoFunctionParamDvcUuid = value.dvcUuid  
+  }  
+  
+  // update user info request's result  
+  // see misc/UpdateUserInfoMsg for detailed structure  
+  responseMessageUpdateUserInfoMessage: UpdateUserInfoMsg = new UpdateUserInfoMsg()  
+  public get ResponseMessageUpdateUserInfoMessage(): UpdateUserInfoMsg {  
+    return this.responseMessageUpdateUserInfoMessage  
+  }  
+  public set ResponseMessageUpdateUserInfoMessage(value: UpdateUserInfoMsg) {  
+    this.responseMessageUpdateUserInfoMessage = value  
+    this.StatusFlagUpdateUserInfoStatus = value.success  
+    if(!value.success){  
+      // update fail  
+      this.GetUserInfo()  
+    }  
+  }  
+  
+  /*  
+   * models   
+   * */  
+  
+  user: User  
+  userInfo: UserInfo  
+  
+  
+  constructor() {  
+    // di  
+    this.user = ServiceContainHelper.resolve&lt;User&gt;(&quot;User&quot;)  
+  
+    if(ServiceContainHelper.contain(&quot;UserInfo&quot;)){  
+      this.userInfo = ServiceContainHelper.resolve(&quot;UserInfo&quot;)  
+    }  
+    else{  
+      this.userInfo = new UserInfo()  
+    }  
+  
+    this.userInfo.userUuid = this.user.userUuid  
+    this.RequestParamUserInfoFunctionParamUserUuid = this.user.userUuid  
+  
+    this.GetUserInfo()  
+  }  
+  
+  
+  // get user info  
+  async GetUserInfo(){  
+    await HttpClientHelper.send({  
+      url:&quot;/api/user/queryUserInfoById&quot;,  
+      extraData:[  
+        {name:&quot;userUuid&quot;,value:this.RequestParamUserInfoFunctionParamUserUuid}  
+      ],  
+      success:(data:GetUserInfoMsg) =&gt; {  
+        console.info(&quot;12138--get verify code success: &quot; + data.email + data.mobile + data.niceName + data.userName + data.dvcUuid)  
+        // 验证  
+        this.ResponseMessageGetUserInfoMessage = data  
+      },  
+      fail:() =&gt; {}  
+    })  
+  }  
+  
+  // update user info  
+  async UpdateUserInfo(){  
+    await HttpClientHelper.send({  
+      url:&quot;/api/user/updateUserInfo&quot;,  
+      extraData:[  
+        {name:&quot;userUuid&quot;,value:this.RequestParamUpdateUserInfoFunctionParamUserUuid},  
+        {name:&quot;userName&quot;,value:this.RequestParamUpdateUserInfoFunctionParamUserName},  
+        {name:&quot;email&quot;,value:this.RequestParamUpdateUserInfoFunctionParamEmail},  
+        {name:&quot;mobile&quot;,value:this.RequestParamUpdateUserInfoFunctionParamMobile},  
+        {name:&quot;niceName&quot;,value:this.RequestParamUpdateUserInfoFunctionParamNiceName},  
+        {name:&quot;photo&quot;,value:this.RequestParamUpdateUserInfoFunctionParamPhoto},  
+        {name:&quot;dvcUuid&quot;,value:this.RequestParamUpdateUserInfoFunctionParamDvcUuid},  
+      ],  
+      success:(data:UpdateUserInfoMsg) =&gt; {  
+        console.info(&quot;12138--UpdateUserInfo success: &quot; + data.success + data.msg + data.description)  
+        // 验证  
+        this.ResponseMessageUpdateUserInfoMessage = data  
+      },  
+      fail:() =&gt; {}    
+	})  
+  }  
+}
+</code></pre>
+<h2 id="感想與總結">感想與總結</h2>
+<p>直到現在，我才終於意識到這次實訓應該帶來的影響究竟是什麽</p>
+<p>如果只是爲了學會一門語言，或者進步自己的編碼水平，那完全可以在任何項目上完成。被選爲組長后，我依然將目光放在編碼者的角度，思考如何將項目完成的優美且合理。但是這並不是一個處於領導和管理地位的角色應該考慮的事情，管理者的目光始終應該放在項目本身而不是具體實現上，這點直到現在我也不太懂</p>
+<p>因此，由於前期項目任務沒有分配好，導致我個人的想法實際上只有自己才清楚，并沒有準確傳達到每一個成員那兒。事實上，僅僅是第二天，就出現了各自爲政，閉門造車的情況。此外，認知上的不平衡也爲合作添加了許多難度，我希望重視結構，但是組内也有追求快速實現的想法，甚至還出現了完全不知道 api 文檔是什麽的個例</p>
+<p>通過第一天暴露的問題，我意識到對於一個 team 來説，影響力度大的不是個人能力而是合作的能力。如何將不同的能力、不同的想法和不同的風格組織起來，是一件不易的事情，而在個人開發時不會涉及這方面的問題</p>
+<p>於是我學到的第一節課就是，在團隊作業中，要學會的是妥協</p>
+<p>我當然覺得自己的設計是最完美的，我有結構，我有層次，我甚至盡可能將其他高級後端語言的特性用這個語言去復現。但是對於其他人來説，在他們的考慮方向下，他們的設計也是最完美的。作爲一個組織者，必須要發揮所有人的能力，不可能一個人逞英雄主義（實際上一開始是打算這麽幹的，但是由於客觀因素被打斷了），這時候就必須對成員妥協，<strong>與其將一個任務分配給能將這個任務做的最好的人，不如將這個任務分配給能做的最好的任務是它的那個人</strong></p>
+<p>得出這種想法后，我考慮重新對項目任務重新分配，於是乎，我現在只需要著手于編寫我的 viewmodel 而不用考慮任何前端 ui 的展示邏輯，但它只是徒有虛名，實際上已經淪爲一個數據提供者了，畢竟開發人員永遠不知道其他人會怎麽去使用。對於個人來説，這是不幸的，但是對於整個項目而言，這樣的妥協卻是繼續推動進度的必要</p>
+<p>那麽我應該對於這次實訓抱有何種期待呢？就盡可能體驗完全不同角度下的目光看到的項目該是什麽樣子吧</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SchoolRelated/PracticalTraining/DAY12.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
