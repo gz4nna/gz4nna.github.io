@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>前言 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="前言 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SQL.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="前言">前言</h1>
+
+<p>T-SQL 主要分爲三種類型的語句</p>
+<ul>
+<li>DDL</li>
+<li>DML</li>
+<li>DCL</li>
+</ul>
+<h1 id="dml">DML</h1>
+<p>DML(Data Manipulation Language)</p>
+<p>數據操作語言,用於操作和處理數據庫中的數據,主要涉及增刪改查等操作</p>
+<h2 id="常見用法">常見用法</h2>
+<h3 id="select">select</h3>
+<pre><code class="lang-sql">SELECT
+	*
+FROM
+	Employees
+</code></pre>
+<p>如果有 <code>where</code> 條件,放在 <code>group by</code> 或 <code>order by</code> 之前</p>
+<p>如果有複雜的查詢條件,在使用 EF Core 時,我傾向與分步執行后在内存中整合結果,在程序層處理數據</p>
+<p>但是在sql中更加常用的方式是,將結果的查詢放在最外層,然後通過子查詢或公共表達式(Common Table Expressions)來不斷降低每一步的條件複雜度,也就是説將數據處理放在了數據庫層</p>
+<p>子查詢示例</p>
+<pre><code class="lang-sql">SELECT
+	*
+FROM
+	Employees
+WHERE
+	EmployeeID IN (
+	    SELECT
+		    EmployeeID
+	    FROM
+		    Orders
+	    WHERE
+		    OrderDate &gt; '2023-01-01'
+	)
+</code></pre>
+<p>公共表達式示例</p>
+<pre><code class="lang-sql">WITH RecentOrders AS (
+	SELECT
+		EmployeeID,
+		COUNT(*) AS OrderCount
+	FROM
+		Orders
+	WHERE
+		OrderDate &gt; '2023-01-01'
+	GROUP BY
+		EmployeeID
+)
+
+SELECT 
+	e.FirstName,
+	e.LastName,
+	r.OrderCount
+FROM
+	Employees e
+	JOIN
+	RecentOrders r
+	ON
+		e.EmployeeID = r.EmployeeID
+</code></pre>
+<p>有關 select 的更多使用範例可以查看<a href="https://learn.microsoft.com/zh-tw/sql/t-sql/queries/select-examples-transact-sql">微軟文檔</a></p>
+<h3 id="insert">insert</h3>
+<pre><code class="lang-sql">INSERT INTO 
+	Employees (FirstName, Department)
+VALUES 
+	('Jane', 'Marketing');
+</code></pre>
+<p>插入表的時候可以選擇只插入部分列</p>
+<p>例如上面例子中,Employees 表中可以有不只兩個列的屬性,但是在顯式指定了插入數據是屬於具體的哪些列后,完全少插入一些數據(在不違反完整性唯一性等等條件下)</p>
+<p><strong>注意</strong></p>
+<p>儘管有以下定義</p>
+<pre><code class="lang-sql">-- Syntax for Azure Synapse Analytics and Parallel Data Warehouse and Microsoft Fabric
+
+INSERT [INTO] { database_name.schema_name.table_name | schema_name.table_name | table_name }
+    [ ( column_name [ ,...n ] ) ]  
+    {   
+      VALUES ( { NULL | expression } )  
+      | SELECT &lt;select_criteria&gt;  
+    }  
+    [ OPTION ( &lt;query_option&gt; [ ,...n ] ) ]  
+[;]
+</code></pre>
+<p>但事實上,不同的數據庫產品可能會有自己的 SQL 方言,所以强制添加而不是省略引數 into 是更好的做法.後續示例也都基於這個規則</p>
+<p>有關 insert 的更多使用範例可以查看<a href="https://learn.microsoft.com/zh-tw/sql/t-sql/statements/insert-transact-sql">微軟文檔</a></p>
+<h3 id="update">update</h3>
+<pre><code class="lang-sql">UPDATE
+	Employees
+SET
+	Department = 'Marketing',
+	FirstName = 'Jane'
+WHERE
+	LastName = 'Doe'
+</code></pre>
+<h3 id="delete">delete</h3>
+<pre><code class="lang-sql">DELETE FROM
+	Employees
+WHERE
+	LastName = 'Doe'
+</code></pre>
+<h1 id="ddl">DDL</h1>
+<p>DDL(Data Definition Language)</p>
+<p>數據定義語言,用於定義和管理數據庫中的結構,主要在修改表結構而不是内容時使用</p>
+<h2 id="常見用法-1">常見用法</h2>
+<h3 id="create">create</h3>
+<pre><code class="lang-sql">CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName NVARCHAR(50),
+    LastName NVARCHAR(50),
+    Department NVARCHAR(50)
+)
+</code></pre>
+<h3 id="alter">alter</h3>
+<pre><code class="lang-sql">ALTER TABLE
+	Employees
+ADD
+	Email NVARCHAR(100)
+</code></pre>
+<pre><code class="lang-sql">ALTER TABLE
+	Employees
+ALTER COLUMN
+	LastName NVARCHAR(100)
+</code></pre>
+<pre><code class="lang-sql">ALTER TABLE
+	Employees
+DROP COLUMN
+	Department
+</code></pre>
+<h3 id="drop">drop</h3>
+<pre><code class="lang-sql">DROP TABLE
+	Employees
+</code></pre>
+<h1 id="dcl">DCL</h1>
+<p>DCL(Data Control Language)
+數據控製語言,用於控制對數據庫的訪問權限,主要涉及用戶權限等</p>
+<h1 id="其他操作">其他操作</h1>
+<p>若非一般的操作,基本上我偏向於在程序代碼中完成,但是也有必須使用SQL語句的情況</p>
+<h3 id="merge">merge</h3>
+<p>merge 是用於將數據插入,更新或刪除到目標表中的一種語句</p>
+<p>常常會涉及源表和目標表的概念,并且可以在一個操作中完成複數個操作的功能</p>
+<pre><code class="lang-sql">MERGE
+INTO
+	Employees AS Target
+USING
+	NewEmployees AS Source
+ON
+	Target.EmployeeID = Source.EmployeeID
+WHEN
+MATCHED
+THEN
+    UPDATE
+    SET
+	    Target.FirstName = Source.FirstName,
+	    Target.LastName = Source.LastName,
+	    Target.Department = Source.Department
+WHEN
+NOT MATCHED
+THEN
+    INSERT
+	    (EmployeeID, FirstName, LastName, Department)
+    VALUES
+	    (Source.EmployeeID, Source.FirstName, Source.LastName, Source.Department)
+WHEN
+NOT MATCHED BY SOURCE
+THEN
+DELETE
+</code></pre>
+<p>而在 EF Core 中,類似的功能實現如下</p>
+<pre><code class="lang-csharp">// 1. 查询所有匹配的记录
+var matchedEmployees = context.Employees
+    .Where(e =&gt; context.NewEmployees.Any(ne =&gt; ne.EmployeeID == e.EmployeeID))
+    .ToList();
+
+// 2. 更新匹配的记录
+foreach (var employee in matchedEmployees)
+{
+    var newEmployee = context.NewEmployees
+        .FirstOrDefault(ne =&gt; ne.EmployeeID == employee.EmployeeID);
+    
+    if (newEmployee != null)
+    {
+        employee.FirstName = newEmployee.FirstName;
+        employee.LastName = newEmployee.LastName;
+        employee.Department = newEmployee.Department;
+    }
+}
+
+context.SaveChanges();
+
+// 3. 插入未匹配的记录
+var unmatchedNewEmployees = context.NewEmployees
+    .Where(ne =&gt; !context.Employees.Any(e =&gt; e.EmployeeID == ne.EmployeeID))
+    .ToList();
+
+context.Employees.AddRange(unmatchedNewEmployees);
+context.SaveChanges();
+
+// 4. 删除不再匹配的记录
+var employeesToDelete = context.Employees
+    .Where(e =&gt; !context.NewEmployees.Any(ne =&gt; ne.EmployeeID == e.EmployeeID))
+    .ToList();
+
+context.Employees.RemoveRange(employeesToDelete);
+context.SaveChanges();
+
+</code></pre>
+<h3 id="索引">索引</h3>
+<h2 id="事務">事務</h2>
+<h2 id="函數">函數</h2>
+<h1 id="安裝使用">安裝使用</h1>
+<p>項目中也許會使用不同的數據庫,甚至可能同時涉及多個不同的數據庫.不管是開發還是維護,都有必要瞭解常見產品的基本使用</p>
+<ul>
+<li>SQL server</li>
+<li></li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SQL.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,9 +1,12 @@
-- name: Index
-  href: index.md
 - name: LearningNotes
 - name: ABP
   items:
   - href: ABP/GettingStart.md
+- name: SQL
+  href: SQL.md
+- name: Web API
+  href: WebAPI.md
+
 - name: SchoolWorks
 - name: HuaWeiPracticalTraining
   items:

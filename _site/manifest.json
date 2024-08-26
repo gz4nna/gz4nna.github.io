@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/gz4nna.github.io",
+  "source_base_path": "D:/GitRepo/gz4nna.github.io",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -72,6 +72,16 @@
       "output": {
         ".html": {
           "relative_path": "notes/ABP/GettingStart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/SQL.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/SQL.html"
         }
       },
       "version": ""
@@ -168,10 +178,10 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/index.md",
+      "source_relative_path": "notes/WebAPI.md",
       "output": {
         ".html": {
-          "relative_path": "notes/index.html"
+          "relative_path": "notes/WebAPI.html"
         }
       },
       "version": ""
