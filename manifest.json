@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/gz4nna.github.io",
+  "source_base_path": "D:/GitRepo/gz4nna.github.io",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,6 +9,16 @@
           "relative_path": "index.json"
         }
       }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "Readme.html"
+        }
+      },
+      "version": ""
     },
     {
       "type": "Conceptual",
@@ -72,6 +82,36 @@
       "output": {
         ".html": {
           "relative_path": "notes/ABP/GettingStart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/MakingGame/Unity/未命名.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/MakingGame/Unity/未命名.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/Redis.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/Redis.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/SQL.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/SQL.html"
         }
       },
       "version": ""
@@ -168,10 +208,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/index.md",
+      "source_relative_path": "notes/Unnamed.md",
       "output": {
         ".html": {
-          "relative_path": "notes/index.html"
+          "relative_path": "notes/Unnamed.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/WebAPI.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/WebAPI.html"
         }
       },
       "version": ""
@@ -198,6 +248,29 @@
         },
         ".json": {
           "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "works/Articles/Umbrella_on_the_corridor.md",
+      "output": {
+        ".html": {
+          "relative_path": "works/Articles/Umbrella_on_the_corridor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "works/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "works/toc.html"
+        },
+        ".json": {
+          "relative_path": "works/toc.json"
         }
       },
       "version": ""
