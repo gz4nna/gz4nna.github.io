@@ -12,6 +12,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "Readme.md",
+      "output": {
+        ".html": {
+          "relative_path": "Readme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "about/index.md",
       "output": {
         ".html": {
@@ -72,6 +82,26 @@
       "output": {
         ".html": {
           "relative_path": "notes/ABP/GettingStart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/MakingGame/Unity/未命名.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/MakingGame/Unity/未命名.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/Redis.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/Redis.html"
         }
       },
       "version": ""
@@ -178,6 +208,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "notes/Unnamed.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/Unnamed.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "notes/WebAPI.md",
       "output": {
         ".html": {
@@ -208,6 +248,29 @@
         },
         ".json": {
           "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "works/Articles/Umbrella_on_the_corridor.md",
+      "output": {
+        ".html": {
+          "relative_path": "works/Articles/Umbrella_on_the_corridor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "works/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "works/toc.html"
+        },
+        ".json": {
+          "relative_path": "works/toc.json"
         }
       },
       "version": ""

@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "036ab1e2adb45007",
+            "id": "ac900e744675fb17",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -16,7 +16,23 @@
                 "file": "notes/WebAPI.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "WebAPI"
+            }
+          },
+          {
+            "id": "363eda5dcd8f1536",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "notes/MakingGame/Unity/未命名.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
             }
           }
         ]
@@ -39,7 +55,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "檔案瀏覽器"
             }
           },
           {
@@ -54,7 +72,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "搜尋"
             }
           },
           {
@@ -62,7 +82,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "書籤"
             }
           }
         ]
@@ -93,7 +115,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "WebAPI 的反向連結"
             }
           },
           {
@@ -105,7 +129,9 @@
                 "file": "notes/WebAPI.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "WebAPI 的對外連結"
             }
           },
           {
@@ -116,7 +142,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "標籤"
             }
           },
           {
@@ -126,7 +154,9 @@
               "type": "outline",
               "state": {
                 "file": "notes/WebAPI.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "WebAPI 的大綱"
             }
           }
         ]
@@ -146,31 +176,35 @@
       "command-palette:開啟命令面板": false
     }
   },
-  "active": "036ab1e2adb45007",
+  "active": "ac900e744675fb17",
   "lastOpenFiles": [
-    "index.md",
-    "notes/WebAPI.md",
-    "notes/Redis.md",
     "notes/SQL.md",
+    "notes/Redis.md",
+    "notes/Unnamed.md",
+    "works/Articles/Umbrella_on_the_corridor.md",
+    "_site/works/toc.pdf",
+    "_site/works/Articles/Umbrella_on_the_corridor.html",
+    "_site/works/Articles",
+    "_site/works/toc.json",
+    "_site/works/toc.html",
+    "_site/works",
+    "works/toc.yml",
+    "works/Articles",
+    "works",
+    "_site/notes/Unnamed.html",
+    "notes/MakingGame/Unity/未命名.md",
+    "Readme.md",
+    "index.md",
     "notes/SchoolRelated/PracticalTraining/DAY00.md",
-    "_site/notes/WebAPI.html",
+    "notes/SchoolRelated/PracticalTraining/DAY12.md",
+    "notes/WebAPI.md",
     "notes/index.md",
     "notes/SchoolRelated/PracticalTraining/DAY02.md",
-    "_site/notes/SQL.html",
-    "notes/SchoolRelated/PracticalTraining/DAY12.md",
-    "未命名",
     "notes/SchoolRelated/PracticalTraining/DAY05.md",
     "notes/SchoolRelated/PracticalTraining/DAY06.md",
-    "_site/notes/SchoolRelated/PracticalTraining/DAY12.html",
     "notes/SchoolRelated/PracticalTraining/DAY11.md",
-    "_site/notes/SchoolRelated/PracticalTraining/DAY11.html",
-    "_site/notes/SchoolRelated/PracticalTraining/DAY06.html",
-    "_site/notes/SchoolRelated/PracticalTraining/DAY05.html",
     "notes/SchoolRelated/PracticalTraining/DAY04.md",
-    "_site/notes/SchoolRelated/PracticalTraining/DAY04.html",
     "notes/SchoolRelated/PracticalTraining/DAY03.md",
-    "_site/notes/SchoolRelated/PracticalTraining/DAY03.html",
-    "_site/notes/SchoolRelated/PracticalTraining/DAY02.html",
     "notes/SchoolRelated/PracticalTraining/DAY01.md",
     "about/index.md",
     "archives/index.md",

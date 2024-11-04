@@ -87,7 +87,7 @@
         <article data-uid="">
 <h1 id="前言">前言</h1>
 
-<p>T-SQL 主要分爲三種類型的語句</p>
+<p>T-SQL 主要分爲三種類型的陳述式</p>
 <ul>
 <li>DDL</li>
 <li>DML</li>
@@ -291,6 +291,35 @@ context.SaveChanges();
 
 </code></pre>
 <h3 id="索引">索引</h3>
+<p>若數據表的規模較大,在查詢的時候需要花費的時間可能會漫長到無法等待,在列上建立索引可以加快查詢到速度,並有效避免遍歷全部記錄才能夠找到目標</p>
+<p>數據表中的索引就相當於在原有的一列記錄上叠加了一個值從而達到優化目的</p>
+<h4 id="聚集索引">聚集索引</h4>
+<p>在表中設置主鍵后,將會自動創建一個聚集索引</p>
+<p>聚集索引將會決定表中數據的物流存儲順序,并且只能存在一個聚集索引</p>
+<p>除了主鍵,範圍查詢也適合使用聚集索引</p>
+<pre><code class="lang-sql">CREATE CLUSTERED INDEX
+	IX_Employees_EmployeeID
+ON
+	Employees(EmployeeID)
+</code></pre>
+<h4 id="非聚集索引">非聚集索引</h4>
+<p>非聚集索引像是對列數據創建了一張跳轉表,適合排序和分組</p>
+<pre><code class="lang-sql">CREATE NONCLUSTERED INDEX
+	IX_Employees_LastName
+ON
+	Employees(LastName)
+</code></pre>
+<h4 id="唯一索引">唯一索引</h4>
+<p>唯一索引僅確保數據唯一,可以是聚集索引也可以是非聚集索引</p>
+<pre><code class="lang-sql">CREATE UNIQUE INDEX
+	IX_Employees_Email
+ON
+	Employees(Email);
+</code></pre>
+<h4 id="全文索引">全文索引</h4>
+<h4 id="xml索引">XML索引</h4>
+<h4 id="空間索引">空間索引</h4>
+<h4 id="過濾索引">過濾索引</h4>
 <h2 id="事務">事務</h2>
 <h2 id="函數">函數</h2>
 <h1 id="安裝使用">安裝使用</h1>

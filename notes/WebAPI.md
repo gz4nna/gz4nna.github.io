@@ -21,7 +21,7 @@ if (app.Environment.IsDevelopment())
 ```csharp
 public static void InitSwagger(this IServiceCollection services)
 {
-	services.AddSwaggerGen();
+    services.AddSwaggerGen();
 }
 ```
 

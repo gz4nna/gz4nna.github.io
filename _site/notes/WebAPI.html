@@ -86,6 +86,131 @@
 
         <article data-uid="">
 
+<p>在 Web API 中使用 Swagger</p>
+<p>创建一个新的 ASP.NET Core WebAPI 项目时，会同步使用 Swagger 作为 API 文档，我们可以通过在管线中自定义添加 Swagger 中间件时的实现，来达到对 Swagger 内容或执行逻辑的一些定制化支持</p>
+<p>Swagger 默认会添加在 Program.cs 中，自动生成的相关代码如下</p>
+<pre><code class="lang-csharp">builder.Services.AddSwaggerGen();
+
+...
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+	app.UseSwaggerUI();
+}
+</code></pre>
+<p>通过修改服务的添加来将默认的 Swagger 改为我们想要的样子，首先将原本的 AddSwaggerGen 封装在自己的方法中</p>
+<pre><code class="lang-csharp">public static void InitSwagger(this IServiceCollection services)
+{
+    services.AddSwaggerGen();
+}
+</code></pre>
+<p>根据 AddSwaggerGen 方法的定义，我们需要添加 SwaggerGenOptions 到方法中</p>
+<pre><code class="lang-csharp">public static IServiceCollection AddSwaggerGen(
+    this IServiceCollection services,
+    Action&lt;SwaggerGenOptions&gt; setupAction = null)
+</code></pre>
+<p>接下来，以不同版本的 API 接口为例。创建一个枚举类来标示版本</p>
+<pre><code class="lang-csharp">public enum APIVersionEnum
+{
+    Version_0_0 = 1,
+    Version_1_0 = 2, 
+}
+</code></pre>
+<p>在 SwaggerGenOptions 中，需要根据不同的枚举值做出不同的操作</p>
+<pre><code class="lang-csharp">services.AddSwaggerGen(options =&gt;
+{
+	typeof(APIVersionEnum).GetEnumNames().ToList().ForEach(version =&gt;
+	{  
+		// 处理逻辑
+	});
+});
+</code></pre>
+<p>额外地，需要在项目生成属性中勾选输出 API 文档，并在程序中反射到该文档</p>
+<pre><code class="lang-csharp">public static void InitSwagger(this IServiceCollection services)
+{
+    services.AddSwaggerGen(options =&gt;
+    {
+        typeof(APIVersionEnum).GetEnumNames().ToList().ForEach(version =&gt;
+        {
+            options.SwaggerDoc(version, version switch
+            {
+                &quot;Version_0_0&quot; =&gt; new OpenApiInfo()
+                {
+                    Title = &quot;Version_0_0&quot;,
+                    Version = &quot;v0.0&quot;,
+                    Description = &quot;description&quot;,
+                    Contact = new OpenApiContact()
+                    {
+                        Name = &quot;author&quot;,
+                        Url = new Uri(&quot;http://gz4nna.github.io&quot;)
+                    }
+                },
+                &quot;Version_1_0&quot; =&gt; new OpenApiInfo()
+                {
+                    Title = &quot;Version_1_0&quot;,
+                    Version = &quot;v1.0&quot;,
+                    Description = &quot;description&quot;,
+                    Contact = new OpenApiContact()
+                    {
+                        Name = &quot;author&quot;,
+                        Url = new Uri(&quot;http://gz4nna.github.io&quot;)
+                    }
+                },
+                _ =&gt; new OpenApiInfo()
+                {
+                    Title = &quot;title&quot;,
+                    Version = &quot;v0.0&quot;,
+                    Description = &quot;description&quot;,
+                    Contact = new OpenApiContact()
+                    {
+                        Name = &quot;author&quot;,
+                        Url = new Uri(&quot;http://gz4nna.github.io&quot;)
+                    }
+                }
+            });                  
+        });
+
+        var xmlFileName = $&quot;{Assembly.GetExecutingAssembly().GetName().Name}.xml&quot;;
+        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFileName), true);
+    });
+}
+</code></pre>
+<p>以上为对服务的修改，SwaggerDoc 定义如下</p>
+<pre><code class="lang-csharp">public static void SwaggerDoc(this SwaggerGenOptions swaggerGenOptions, string name, OpenApiInfo info)
+{
+    swaggerGenOptions.SwaggerGeneratorOptions.SwaggerDocs.Add(name, info);
+}
+</code></pre>
+<p>我们用 APIVersionEnum 中的枚举值将原本一整个 Swagger 文档分开，每部分展示的内容除了对 API 本身的手动划分外，还与指定的 OpenApiInfo 有关，常用的属性诸如 <code>Title</code>, <code>Description</code>, <code>Version</code>, <code>TermsOfService</code>, <code>Contact</code>, <code>License</code> 等等</p>
+<p>接下来在路由中添加终结点</p>
+<pre><code class="lang-csharp">public static void InitSwagger(this WebApplication app)
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =&gt;
+    {
+        typeof(APIVersionEnum).GetEnumNames().ToList().ForEach(version =&gt;
+        {
+            options.SwaggerEndpoint($&quot;/swagger/{version}/swagger.json&quot;, $&quot;{version}&quot;);
+        });
+    });
+}
+</code></pre>
+<p>最后将两处变更同步到 Program.cs 中，原本的代码变成了</p>
+<pre><code class="lang-csharp">builder.Services.InitSwagger();
+
+...
+
+if (app.Environment.IsDevelopment())
+{
+    app.InitSwagger();
+}
+</code></pre>
+<p>现在对于一个新的 Controller，可以指定所属版本并在文档中体现出来</p>
+<pre><code class="lang-csharp">[ApiController]
+[Route(&quot;api/[controller]/[action]&quot;)]
+[ApiExplorerSettings(GroupName = nameof(APIVersionEnum.Version_0_0))]
+</code></pre>
 
 </article>
 
