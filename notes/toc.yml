@@ -9,6 +9,14 @@
 - name: Unnamed
   href: Unnamed.md
 
+- name: MakingGame
+- name: KiriKiri
+  items:
+  - href: MakingGame/KiriKiri/index.md
+- name: Unity
+  items:
+  - href: MakingGame/Unity/reflaction.md
+
 - name: SchoolWorks
 - name: HuaWeiPracticalTraining
   items:
