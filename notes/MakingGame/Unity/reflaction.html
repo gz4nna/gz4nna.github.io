@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>&lt;折光编年史:reflaction&gt;开发总结 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="&lt;折光编年史:reflaction&gt;开发总结 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MakingGame/Unity/reflaction.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="折光编年史reflaction开发总结">&lt;折光编年史:reflaction&gt;开发总结</h1>
+
+<p>十月底 <code>TapTap</code> 举办了 <code>聚光灯GameJam</code> 活动,我应小新邀请,在活动中作为一名程序参与制作了 &lt;折光编年史:reflaction&gt;</p>
+<p>&lt;折光&gt; 是一款卡通风塔防游戏,玩家需要放置防御塔来保护基地不受敌人的攻击.防御塔主要使用光线对敌人攻击,另外设有辅助性质的塔,可提供反射和折射等功能</p>
+<p>前期我主要负责了编写敌人相关的逻辑,后期负责整个项目的代码维护和功能添加.现在活动告一段落,遂回想一下这次经历所带来的收获</p>
+<h2 id="程序方面">程序方面</h2>
+<h3 id="从自己代码中总结">从自己代码中总结</h3>
+<h4 id="优雅致死追求完美可能会损失效率">优雅致死,追求完美可能会损失效率</h4>
+<p>举个例子,在刚开始的阶段,我负责的是所有敌人的相关逻辑编写.出于 cs 的编码思维,我很自然地一开始就使用一个接口来描述所有敌人的基本属性和基本行为,然后继承自该接口,实现了一个敌人的基本类,再着手开始各种敌人的开发</p>
+<p>在整个开发的后期,我这样的做法确实带来了很大的便利性.得益于我在设计阶段就考虑得很充分,后续不管增加什么样的敌人,大部分都只需要继承已有的类,然后重写几行特定的行为就可以了.甚至有些敌人可以在不修改代码而只是调整预制体参数设置的情况下完成</p>
+<p>但是在开发前期,由于我需要把精力放在思考&quot;如何设计才是更合理的&quot;这个问题上面,导致另一位程序完成许多功能时我还依旧在各种方案之间取舍,结果最后被评价了&quot;过于模式化&quot;┭┮﹏┭┮但其实我完全可以每个类单独开发,重复的代码 CV 一下也花不了几秒钟,对性能也没有什么影响,至于优化完全可以在 <code>PostJam</code> 的阶段完成,那么为什么不呢?完全只是因为我觉得不优雅😭</p>
+<p>上面的情况反映出来的<strong>起步阶段的效率丢失</strong>是一方面,另一方面是,<code>GameJam</code> 本身是一种生命周期极短的活动,一个游戏需要在几天之内完成,完成后也不一定会继续开发.就比如这次的&lt;折光&gt;,在策划案中的内容明显比实际开发的内容更加丰富,并且直到发布在 <code>TapTap</code> 上的前夕,成员们都还有继续开发后续内容的打算.然而现实是,直到现在也没有着手开始对游戏进行完善.于是乎,&lt;折光&gt;彻底变成了一上线就&quot;死掉&quot;的项目,我彻彻底底地做了一次<strong>过度设计</strong></p>
+<p>我明显地感觉到,自己学习的东西越多,越有一种想要在一开始就达成&quot;完美设计&quot;的强烈冲动,但是必须得考虑是否值得.短期且不需要重写的东西还是适当将重心放在追求速度上吧~</p>
+<h4 id="使用-startcoroutine-开启协程达到延时效果">使用 <code>StartCoroutine</code> 开启协程达到延时效果</h4>
+<p>在编码时碰到一个需求:我要在指定时间间隔后执行一些逻辑</p>
+<p>在 <code>.NET</code> 程序中,一般会采用 <code>Task.Delay</code> 方法结合 <code>await/async</code> 来实现这个功能,但是 <code>Task</code> 实际上是采用线程实现的,而在 <code>Unity</code> 中,尽管存在对 <code>Task</code> 的支持,但是在非主线程上获取物体是会出问题的,所以这时候需要换用协程来处理</p>
+<p>例如以下代码:</p>
+<pre><code class="lang-csharp">public bool Attackable 
+{ 
+    get =&gt; attackable; 
+    set
+    {
+        attackable = value;
+        if(attackable == false) StartCoroutine(ResetAttackableAfterDelay(AttackInterval));
+    }
+}
+
+private IEnumerator ResetAttackableAfterDelay(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    attackable = true;
+}
+</code></pre>
+<p>使用 <strong><code>StartCoroutine</code> 方法开启一个协程</strong>,在 <code>Unity</code> 运行到这个地方时,会在每一帧检查迭代器 <code>ResetAttackableAfterDelay</code> 中的 <code>WaitForSeconds</code> 方法是否完成,完成后才会执行语句 <code>attackable = true;</code>,从而达到本处延时但不影响其他部分的正常运行(不会阻塞主线程)</p>
+<p>对应的 <code>.NET</code> 版本应该是这样</p>
+<pre><code class="lang-csharp">private Task resetTask;
+
+public bool Attackable
+{
+    get =&gt; attackable;
+    set
+    {
+        attackable = value;
+        if (attackable == false) resetTask = ResetAttackableAfterDelay(AttackInterval);
+    }
+}
+
+private async Task ResetAttackableAfterDelay(int delay)
+{
+    await Task.Delay(delay);
+    attackable = true;
+}
+</code></pre>
+<h4 id="使用-playerprefs-存储临时数据">使用 <code>PlayerPrefs</code> 存储临时数据</h4>
+<p><code>PlayerPrefs</code> 是 <code>Unity</code> 提供的一个轻量级数据存储系统,适合用来<strong>保存简单的数据</strong>.</p>
+<p>我一开始并不知道有它的存在,于是在单个场景中使用单例实现数据的临时存放.但是后续出现了要在多个场景之间进行变量传递的需求,此时我发现 <code>PlayerPrefs</code> 是一个很好的工具,就像一个随时可用的字典</p>
+<ul>
+<li>存储数据</li>
+</ul>
+<pre><code class="lang-csharp">PlayerPrefs.SetString(string key, string value);
+PlayerPrefs.Save();
+</code></pre>
+<ul>
+<li>获取数据</li>
+</ul>
+<pre><code class="lang-csharp">PlayerPrefs.GetString(string key, string defaultValue = &quot;&quot;);
+</code></pre>
+<ul>
+<li>删除数据</li>
+</ul>
+<pre><code class="lang-csharp">PlayerPrefs.DeleteKey(string key);
+</code></pre>
+<p>甚至它可以在应用退出的时候自动保存数据,所以条件有限的时候还可以勉强用来做持久化.更多内容参考<a href="https://docs.unity.cn/cn/current/ScriptReference/PlayerPrefs.html">官方文档</a>的描述</p>
+<h4 id="使用-json-来保存数据">使用 <code>JSON</code> 来保存数据</h4>
+<p>和&quot;困觉&quot;的小伙伴们一起开发的时候,曾经尝试过将数据存放在 <code>csv</code> 中,而这次我选择了使用 <code>JSON</code> 来存放关卡信息.这样的选择主要考虑了几方面:</p>
+<ul>
+<li>希望可以在游戏发布后方便地修改数据(自带老金)</li>
+<li>没有尝试过在 <code>Unity</code> 中使用 <code>JSON</code></li>
+</ul>
+<p>首先,我将关卡信息放在 <code>Unity</code> 默认存放数据用的 <code>Assets/Resources</code> 文件夹下,这样可以确保使用 <code>Resources.Load</code> 方法获取文件</p>
+<p>接下来,将持久化文件放在各个平台对应的默认存放位置,这个位置可以使用 <code>Application.persistentDataPath</code> 获取到</p>
+<p>至此,完成了数据在目标平台的存放,读取也很简单</p>
+<p>首先使用 <code>File.ReadAllText</code> 方法读取文件,再使用 <code>JsonUtility.FromJson\&lt;T&gt;</code> 方法转换成相应的类型,这部分的操作和 .NET 程序中是完全一样的</p>
+<p>总体上来说,在 <code>Unity</code> 中使用 <code>JSON</code> 来存放信息的<strong>操作没有特殊的变化</strong>.需要注意的是,虽然我在使用的时候一切正常,但是 <code>Resources.Load</code> 这个方法被描述为&quot;不支持直接加载 <code>JSON</code>&quot;(我使用的泛型类型为 <code>TextAsset</code>,估计把它当作 <code>txt</code> 去读了)</p>
+<p>更加推荐的方式是将文件放入 <code>Assets/StreamingAssets</code> 文件夹,然后这样使用</p>
+<pre><code class="lang-csharp">string path = System.IO.Path.Combine(Application.streamingAssetsPath, &quot;文件名&quot;);
+
+UnityWebRequest request = UnityWebRequest.Get(path);
+yield return request.SendWebRequest();
+
+string jsonContent = request.downloadHandler.text;
+// 解析
+</code></pre>
+<p><code>UnityWebRequest</code> 是异步操作,需要用<a href="#%E4%BD%BF%E7%94%A8-startcoroutine-%E5%BC%80%E5%90%AF%E5%8D%8F%E7%A8%8B%E8%BE%BE%E5%88%B0%E5%BB%B6%E6%97%B6%E6%95%88%E6%9E%9C">上文</a>提到的方式去开启协程来调用.这种方式效率较低,一般用于<strong>需要跨平台并确保发布时不易更改的静态文件</strong>,比如这次的关卡信息就很合适</p>
+<h3 id="从他人代码中学习">从他人代码中学习</h3>
+<h4 id="使用-linerender-制作射线">使用 <code>LineRender</code> 制作射线</h4>
+<p>防御塔的主要攻击手段是发射光线到敌人身上,这部分的实现小伙伴采用了 <code>LineRender</code> 这个类型来绘制光线,这恰好是我不了解的知识</p>
+<p><code>LineRender</code> 作为组件挂载到 <code>GameObject</code> 上,简单的绘制激光主要需要设置:</p>
+<ul>
+<li>线条宽度</li>
+</ul>
+<pre><code class="lang-csharp">lineRenderer.startWidth = 0.1f;
+lineRenderer.endWidth = 0.1f;
+</code></pre>
+<ul>
+<li>线条颜色</li>
+</ul>
+<pre><code class="lang-csharp">lineRenderer.material = new Material(Shader.Find(&quot;Unlit/Color&quot;));
+lineRenderer.material.color = laserColor;
+</code></pre>
+<ul>
+<li>起点和终点</li>
+</ul>
+<pre><code class="lang-csharp">lineRenderer.SetPosition(0, laserOrigin.position);
+lineRenderer.SetPosition(1, hit.point);
+</code></pre>
+<p>可以参考<a href="https://docs.unity.cn/cn/current/Manual/class-LineRenderer.html">官方文档</a>中对此的相关描述</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MakingGame/Unity/reflaction.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

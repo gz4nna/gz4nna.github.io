@@ -88,10 +88,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/MakingGame/Unity/未命名.md",
+      "source_relative_path": "notes/MakingGame/KiriKiri/index.md",
       "output": {
         ".html": {
-          "relative_path": "notes/MakingGame/Unity/未命名.html"
+          "relative_path": "notes/MakingGame/KiriKiri/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/MakingGame/Unity/reflaction.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/MakingGame/Unity/reflaction.html"
         }
       },
       "version": ""
