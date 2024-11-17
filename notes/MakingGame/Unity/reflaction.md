@@ -108,7 +108,7 @@ PlayerPrefs.DeleteKey(string key);
 
 至此,完成了数据在目标平台的存放,读取也很简单
 
-首先使用 `File.ReadAllText` 方法读取文件,再使用 `JsonUtility.FromJson\<T>` 方法转换成相应的类型,这部分的操作和 .NET 程序中是完全一样的
+首先使用 `File.ReadAllText` 方法读取文件,再使用 `JsonUtility.FromJson<T>` 方法转换成相应的类型,这部分的操作和 .NET 程序中是完全一样的
 
 总体上来说,在 `Unity` 中使用 `JSON` 来存放信息的**操作没有特殊的变化**.需要注意的是,虽然我在使用的时候一切正常,但是 `Resources.Load` 这个方法被描述为"不支持直接加载 `JSON`"(我使用的泛型类型为 `TextAsset`,估计把它当作 `txt` 去读了)
 

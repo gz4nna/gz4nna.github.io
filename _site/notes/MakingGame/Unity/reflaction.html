@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -167,7 +167,7 @@ PlayerPrefs.Save();
 <p>首先,我将关卡信息放在 <code>Unity</code> 默认存放数据用的 <code>Assets/Resources</code> 文件夹下,这样可以确保使用 <code>Resources.Load</code> 方法获取文件</p>
 <p>接下来,将持久化文件放在各个平台对应的默认存放位置,这个位置可以使用 <code>Application.persistentDataPath</code> 获取到</p>
 <p>至此,完成了数据在目标平台的存放,读取也很简单</p>
-<p>首先使用 <code>File.ReadAllText</code> 方法读取文件,再使用 <code>JsonUtility.FromJson\&lt;T&gt;</code> 方法转换成相应的类型,这部分的操作和 .NET 程序中是完全一样的</p>
+<p>首先使用 <code>File.ReadAllText</code> 方法读取文件,再使用 <code>JsonUtility.FromJson&lt;T&gt;</code> 方法转换成相应的类型,这部分的操作和 .NET 程序中是完全一样的</p>
 <p>总体上来说,在 <code>Unity</code> 中使用 <code>JSON</code> 来存放信息的<strong>操作没有特殊的变化</strong>.需要注意的是,虽然我在使用的时候一切正常,但是 <code>Resources.Load</code> 这个方法被描述为&quot;不支持直接加载 <code>JSON</code>&quot;(我使用的泛型类型为 <code>TextAsset</code>,估计把它当作 <code>txt</code> 去读了)</p>
 <p>更加推荐的方式是将文件放入 <code>Assets/StreamingAssets</code> 文件夹,然后这样使用</p>
 <pre><code class="lang-csharp">string path = System.IO.Path.Combine(Application.streamingAssetsPath, &quot;文件名&quot;);

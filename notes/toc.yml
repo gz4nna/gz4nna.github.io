@@ -16,6 +16,9 @@
 - name: Unity
   items:
   - href: MakingGame/Unity/reflaction.md
+- name: Aseprite
+  items:
+  - href: MakingGame/Aseprite/Intall_Aseprite.md
 
 - name: SchoolWorks
 - name: HuaWeiPracticalTraining

@@ -1,2 +1,8 @@
 - name: Articles
-  href: Articles/Umbrella_on_the_corridor.md
+  items:
+  - href: Articles/Opposite_Seat.md
+  - href: Articles/Umbrella_on_the_corridor.md
+
+- name: Ideas
+  items:
+  - href: Ideas/Energy_Crossbow_Design.md
