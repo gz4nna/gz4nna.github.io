@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>title | GZ4nna&#39;s Notes </title>
+      <title>安装 Aseprite | GZ4nna&#39;s Notes </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="title | GZ4nna&#39;s Notes ">
+      <meta name="title" content="安装 Aseprite | GZ4nna&#39;s Notes ">
       
       
       <link rel="icon" href="../../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MakingGame/KiriKiri/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MakingGame/Aseprite/Intall_Aseprite.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,13 +85,56 @@
         </div>
 
         <article data-uid="">
-<h1 id="title">title</h1>
+<h1 id="安装-aseprite">安装 Aseprite</h1>
 
+<p><code>Aseprite</code> 支持用户自行编译使用, 仓库位于<a href="https://github.com/aseprite/aseprite">这里</a>
+INSTALL.md 中有基本的安装指南, 以下是在win10上的实践</p>
+<h1 id="平台">平台</h1>
+<p>我使用的是 Windows 10, 编译的 <code>Aseprite</code> 版本为 1.3.9</p>
+<h1 id="依赖">依赖</h1>
+<p>使用 Windows 编译 <code>Aseprite</code> 需要:</p>
+<ul>
+<li><p><a href="https://visualstudio.microsoft.com/downloads/">Visual Studio</a>
+VisualStudio 不是必须的, 使用 VisualStudio 是为了选择 <code>Visual Studio installer</code> 中的工作负荷 <code>使用c++的桌面开发</code>, 这个工作负荷会帮助安装好</p>
+<ul>
+<li>3.16以上版本的 <a href="https://cmake.org">CMake</a></li>
+<li><a href="https://ninja-build.org">Ninja</a></li>
+</ul>
+<p>这两个才是必要的, 可以自行安装, 如果使用 VS 的话, 可以在安装目录的 <code>Common7\IDE\CommonExtensions\Microsoft\CMake</code> 这个路径下找到这两个工具</p>
+</li>
+<li><p>编译后的 <a href="https://github.com/aseprite/skia/releases">Skia 库</a>
+去看仓库中的 README 文件里推荐使用哪个 branch, 我在安装时使用了 m102
+下载发行版可以省去编译的环节,注意需要和平台对应, 我选择的是x64</p>
+</li>
+</ul>
+<p>确保拥有以上内容后, 可以在系统环境变量中将 cmake 和 ninja 添加到 Path 中, 遇到添加后不生效的情况可以关闭所有 cmd 后使用以下命令来刷新验证是否成功添加(或者重启来刷新):</p>
+<pre><code class="lang-shell">echo %PATH%
+</code></pre>
+<h1 id="编译">编译</h1>
+<p><code>Visual Studio</code> 的编译器可能无法直接被找到, 因此, 需要使用 <code>Developer Command Prompt for VS</code> 运行编译的指令</p>
+<blockquote>
+<p><strong>注意</strong></p>
+</blockquote>
+<p>在开始菜单中的 <code>Developer Command Prompt for VS</code> 默认是32位, 如果编译目标为64位, 需要使用 <code>Common7\Tools\VsDevCmd.bat</code> 这个批处理</p>
+<pre><code class="lang-shell">call &quot;VsDevCmd.bat&quot; -arch=x64
+</code></pre>
+<p>在 cmd 中运行以上命令后, 便进入了 <code>Developer Command Prompt for VS</code> 工具</p>
+<p>由于 <code>Aseprite</code> 中 CMakeList 文件使用的编译器名称和 VS 中不同, 此时还需要进一步设定来帮助 CMake 指定编译器:</p>
+<pre><code class="lang-shell">set CC=cl
+set CXX=cl
+</code></pre>
+<p>现在, 可以在想要的输出目录下运行以下命令(根据自己的变量名替换):</p>
+<pre><code class="lang-shell">cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLAF_BACKEND=skia -DSKIA_DIR=C:/deps/skia -DSKIA_LIBRARY_DIR=C:/deps/skia/out/Release-x64 -DSKIA_LIBRARY=C:/deps/skia/out/Release-x64/skia.lib -G Ninja ..
+</code></pre>
+<p>成功后, 运行:</p>
+<pre><code class="lang-shell">ninja aseprite
+</code></pre>
+<p>生成的可执行文件在输出目录的 <code>\bin</code> 下</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MakingGame/KiriKiri/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MakingGame/Aseprite/Intall_Aseprite.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

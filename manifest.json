@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/GitRepo/gz4nna.github.io",
+  "source_base_path": "D:/gz4nna.github.io",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -88,10 +88,20 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/MakingGame/KiriKiri/index.md",
+      "source_relative_path": "notes/MakingGame/Aseprite/Intall_Aseprite.md",
       "output": {
         ".html": {
-          "relative_path": "notes/MakingGame/KiriKiri/index.html"
+          "relative_path": "notes/MakingGame/Aseprite/Intall_Aseprite.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/MakingGame/KiriKiri/Basic_Script.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/MakingGame/KiriKiri/Basic_Script.html"
         }
       },
       "version": ""
@@ -264,10 +274,30 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "works/Articles/Opposite_Seat.md",
+      "output": {
+        ".html": {
+          "relative_path": "works/Articles/Opposite_Seat.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "works/Articles/Umbrella_on_the_corridor.md",
       "output": {
         ".html": {
           "relative_path": "works/Articles/Umbrella_on_the_corridor.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "works/Ideas/Energy_Crossbow_Design.md",
+      "output": {
+        ".html": {
+          "relative_path": "works/Ideas/Energy_Crossbow_Design.html"
         }
       },
       "version": ""
