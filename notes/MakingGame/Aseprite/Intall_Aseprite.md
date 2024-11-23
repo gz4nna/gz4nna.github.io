@@ -1,6 +1,7 @@
 # 安装 Aseprite
 
 `Aseprite` 支持用户自行编译使用, 仓库位于[这里](https://github.com/aseprite/aseprite)
+
 INSTALL.md 中有基本的安装指南, 以下是在win10上的实践
 
 # 平台
@@ -21,6 +22,7 @@ INSTALL.md 中有基本的安装指南, 以下是在win10上的实践
 	
 - 编译后的 [Skia 库](https://github.com/aseprite/skia/releases)
 	去看仓库中的 README 文件里推荐使用哪个 branch, 我在安装时使用了 m102
+	
 	下载发行版可以省去编译的环节,注意需要和平台对应, 我选择的是x64
 
 确保拥有以上内容后, 可以在系统环境变量中将 cmake 和 ninja 添加到 Path 中, 遇到添加后不生效的情况可以关闭所有 cmd 后使用以下命令来刷新验证是否成功添加(或者重启来刷新):
