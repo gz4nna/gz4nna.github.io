@@ -1,13 +1,13 @@
 - name: LearningNotes
-- name: ABP
+- name: SimpleSkillsGuide
   items:
-  - href: ABP/GettingStart.md
+  - href: SimpleSkillsGuide/Basic_Use_of_WebCrawler.md
+  - href: SimpleSkillsGuide/Custom_Swagger_Page.md
+  - href: SimpleSkillsGuide/Make_Nuget_Package.md
+  - href: SimpleSkillsGuide/Make_Docker_Image.md
 - name: SQL
-  href: SQL.md
-- name: Web API
-  href: WebAPI.md
-- name: Unnamed
-  href: Unnamed.md
+  items:
+  - href: SQL.md
 
 - name: MakingGame
 - name: KiriKiri
@@ -19,16 +19,3 @@
 - name: Aseprite
   items:
   - href: MakingGame/Aseprite/Intall_Aseprite.md
-
-- name: SchoolWorks
-- name: HuaWeiPracticalTraining
-  items:
-  - href: SchoolRelated/PracticalTraining/DAY00.md
-  - href: SchoolRelated/PracticalTraining/DAY01.md
-  - href: SchoolRelated/PracticalTraining/DAY02.md
-  - href: SchoolRelated/PracticalTraining/DAY03.md
-  - href: SchoolRelated/PracticalTraining/DAY04.md
-  - href: SchoolRelated/PracticalTraining/DAY05.md
-  - href: SchoolRelated/PracticalTraining/DAY06.md
-  - href: SchoolRelated/PracticalTraining/DAY11.md
-  - href: SchoolRelated/PracticalTraining/DAY12.md

@@ -1,4 +1,4 @@
-在 Web API 中使用 Swagger
+# 如何在 Swagger 页面展示自定义内容
 
 创建一个新的 ASP.NET Core WebAPI 项目时，会同步使用 Swagger 作为 API 文档，我们可以通过在管线中自定义添加 Swagger 中间件时的实现，来达到对 Swagger 内容或执行逻辑的一些定制化支持
 
