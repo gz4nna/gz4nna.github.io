@@ -2,21 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>基本脚本使用 | GZ4nna&#39;s Notes </title>
+      <title>如何封装一个 NuGet 包 | GZ4nna&#39;s Notes </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="基本脚本使用 | GZ4nna&#39;s Notes ">
+      <meta name="title" content="如何封装一个 NuGet 包 | GZ4nna&#39;s Notes ">
       
       
-      <link rel="icon" href="../../../favicon.ico">
-      <link rel="stylesheet" href="../../../public/docfx.min.css">
-      <link rel="stylesheet" href="../../../public/main.css">
-      <meta name="docfx:navrel" content="../../../toc.html">
-      <meta name="docfx:tocrel" content="../../toc.html">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
       
-      <meta name="docfx:rel" content="../../../">
+      <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MakingGame/KiriKiri/Basic_Script.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SimpleSkillsGuide/Make_Nuget_Package.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
 
-      <script type="module" src="./../../../public/docfx.min.js"></script>
+      <script type="module" src="./../../public/docfx.min.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -43,8 +43,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../../../index.html">
-            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="GZ4nna&#39;s Notes">
             GZ4nna&#39;s Notes
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,13 +85,70 @@
         </div>
 
         <article data-uid="">
-<h1 id="基本脚本使用">基本脚本使用</h1>
+<h1 id="如何封装一个-nuget-包">如何封装一个 NuGet 包</h1>
 
+<p>创建一个类库,包含接口和实现,将需要的功能在方法中暴露,将使用的工具隐藏在方法的实现中
+在 .csproj 文件中添加 NuGet 包的元数据</p>
+<pre><code class="lang-xml">&lt;PropertyGroup&gt;
+	&lt;!-- 编译目标框架 --&gt;
+	&lt;TargetFramework&gt;net6.0&lt;/TargetFramework&gt;
+	
+	&lt;!-- 包唯一标识符 --&gt;
+	&lt;PackageId&gt;MyCustomLibrary&lt;/PackageId&gt;
+	
+	&lt;!-- 包版本 --&gt;
+	&lt;Version&gt;1.0.0&lt;/Version&gt;
+	
+	&lt;!-- 包作者 --&gt;
+	&lt;Authors&gt;YourNameOrCompany&lt;/Authors&gt;
+	
+	&lt;!-- 包描述 --&gt;
+	&lt;Description&gt;This is a library.&lt;/Description&gt;
+	
+	&lt;!-- 包版权信息 --&gt;
+	&lt;Copyright&gt;Copyright © 2024 YourCompany&lt;/Copyright&gt;
+	
+	&lt;!-- 包标签（关键词） --&gt;
+	&lt;PackageTags&gt;EFCore;Redis;Caching;Repository&lt;/PackageTags&gt;
+	
+	&lt;!-- 许可证表达式或自定义许可证文件 --&gt;
+	&lt;PackageLicenseExpression&gt;MIT&lt;/PackageLicenseExpression&gt;	
+	&lt;!-- &lt;PackageLicenseFile&gt;LICENSE.txt&lt;/PackageLicenseFile&gt; --&gt;
+	&lt;!-- 可选，使用自定义文件代替许可证表达式 --&gt;
+	
+	&lt;!-- 代码仓库 URL --&gt;
+	&lt;RepositoryUrl&gt;https://url&lt;/RepositoryUrl&gt;
+	
+	&lt;!-- 包图标（需添加到项目并设置“在输出目录中复制”） --&gt;
+	&lt;Icon&gt;icon.png&lt;/Icon&gt;
+	
+	&lt;!-- 发布日志 --&gt;
+	&lt;ReleaseNotes&gt;Basic repository and caching support.&lt;/ReleaseNotes&gt;
+	
+	&lt;!-- 项目主页或文档 URL --&gt;
+	&lt;ProjectUrl&gt;https://yourprojecthomepage.com&lt;/ProjectUrl&gt;
+	
+	&lt;!-- 是否要求用户在安装时接受许可证 --&gt;
+	&lt;RequireLicenseAcceptance&gt;true&lt;/RequireLicenseAcceptance&gt;
+	
+	&lt;!-- 简短描述 --&gt;
+	&lt;Summary&gt;A lightweight library for caching and data access.&lt;/Summary&gt;
+	
+	&lt;!-- 主要编程语言 --&gt;
+	&lt;Language&gt;en-US&lt;/Language&gt;
+	
+	&lt;!-- 包显示名称 --&gt;
+	&lt;Title&gt;My Custom Library&lt;/Title&gt;
+	
+	&lt;!-- 构建时生成 NuGet 包 --&gt;
+	&lt;GeneratePackageOnBuild&gt;true&lt;/GeneratePackageOnBuild&gt;
+&lt;/PropertyGroup&gt;
+</code></pre>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MakingGame/KiriKiri/Basic_Script.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/SimpleSkillsGuide/Make_Nuget_Package.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

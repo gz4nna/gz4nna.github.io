@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/gz4nna.github.io",
+  "source_base_path": "D:/GitRepo/gz4nna.github.io",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -118,16 +118,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/Redis.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/Redis.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "notes/SQL.md",
       "output": {
         ".html": {
@@ -228,20 +218,40 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/Unnamed.md",
+      "source_relative_path": "notes/SimpleSkillsGuide/Basic_Use_of_WebCrawler.md",
       "output": {
         ".html": {
-          "relative_path": "notes/Unnamed.html"
+          "relative_path": "notes/SimpleSkillsGuide/Basic_Use_of_WebCrawler.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/WebAPI.md",
+      "source_relative_path": "notes/SimpleSkillsGuide/Custom_Swagger_Page.md",
       "output": {
         ".html": {
-          "relative_path": "notes/WebAPI.html"
+          "relative_path": "notes/SimpleSkillsGuide/Custom_Swagger_Page.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/SimpleSkillsGuide/Make_Docker_Image.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/SimpleSkillsGuide/Make_Docker_Image.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/SimpleSkillsGuide/Make_Nuget_Package.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/SimpleSkillsGuide/Make_Nuget_Package.html"
         }
       },
       "version": ""
