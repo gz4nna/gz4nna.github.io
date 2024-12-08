@@ -10,6 +10,9 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: generate-snake-game-from-github-contribution-grid
+        uses: Platane/snk@v3.2.0
+            
       - name: Checkout master #获取master，放在master目录下
         uses: actions/checkout@v2.3.1
         with:
