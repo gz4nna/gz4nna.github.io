@@ -6,13 +6,29 @@ on:
       - master # Default release branch
 
 jobs:
+  generate-snake-game:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Generate Snake Game
+        uses: Platane/snk@v3.2.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          output: ./snake.svg # 可选，指定输出文件路径
+
+      - name: Upload Snake Game to Repository
+        uses: actions/upload-artifact@v3
+        with:
+          name: snake-game
+          path: ./snake.svg
+
   build-and-deploy:
     runs-on: windows-latest
 
-    steps:
-      - name: generate-snake-game-from-github-contribution-grid
-        uses: Platane/snk@v3.2.0
-            
+    steps:            
       - name: Checkout master #获取master，放在master目录下
         uses: actions/checkout@v2.3.1
         with:
