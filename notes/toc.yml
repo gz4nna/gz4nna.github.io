@@ -1,21 +1,17 @@
-- name: LearningNotes
-- name: SimpleSkillsGuide
+- name: 学习笔记
+- name: 简单技能学习
   items:
   - href: SimpleSkillsGuide/Basic_Use_of_WebCrawler.md
   - href: SimpleSkillsGuide/Custom_Swagger_Page.md
   - href: SimpleSkillsGuide/Make_Nuget_Package.md
   - href: SimpleSkillsGuide/Make_Docker_Image.md
-- name: SQL
+  - href: MakingGame/Aseprite/Intall_Aseprite.md
+- name: 语言框架学习
   items:
-  - href: SQL.md
+  - href: Angular/LearningAngular.md
 
-- name: MakingGame
-- name: KiriKiri
-  items:
-  - href: MakingGame/KiriKiri/index.md
-- name: Unity
+- name: 总结感悟
+- name: 项目制作
   items:
   - href: MakingGame/Unity/reflaction.md
-- name: Aseprite
-  items:
-  - href: MakingGame/Aseprite/Intall_Aseprite.md
+

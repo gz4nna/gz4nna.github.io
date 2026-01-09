@@ -1,8 +1,6 @@
-- name: Works
-  href: works/
-- name: Notes
+- name: 笔记
   href: notes/
-- name: Archives
+- name: 归档
   href: archives/
-- name: About
+- name: 关于
   href: about/

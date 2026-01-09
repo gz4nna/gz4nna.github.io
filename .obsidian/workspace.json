@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Readme.md",
+                "file": "notes/Angular/LearningAngular.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Readme"
+              "title": "LearningAngular"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "檔案瀏覽器"
@@ -77,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 330.5069465637207
+    "width": 200
   },
   "right": {
     "id": "e15d15458d73d990",
@@ -154,6 +155,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:建立新的 base": false,
       "switcher:開啟快速切換": false,
       "graph:查看關聯圖": false,
       "canvas:建立新畫布": false,
@@ -164,44 +166,44 @@
   },
   "active": "c5d26ffd6750e607",
   "lastOpenFiles": [
-    "notes/SQL.md",
-    "notes/SchoolRelated/PracticalTraining/DAY06.md",
-    "notes/MakingGame/KiriKiri/Basic_Script.md",
-    "works/Ideas/mask.png",
+    "index.md",
+    "archives/index.md",
     "works/Ideas/Energy_Crossbow_Design.md",
+    "_site/public/xychartDiagram-PRI3JC2R-7B6ZH23X.min.js.map",
+    "_site/public/xychartDiagram-PRI3JC2R-7B6ZH23X.min.js",
+    "_site/public/treemap-75Q7IDZK-DQ2GXHQO.min.js.map",
+    "_site/public/treemap-75Q7IDZK-DQ2GXHQO.min.js",
+    "_site/public/timeline-definition-IT6M3QCI-HZEFDU3R.min.js.map",
+    "_site/public/timeline-definition-IT6M3QCI-HZEFDU3R.min.js",
+    "_site/public/tex-svg-full-AYDXXAHZ.min.js.map",
+    "_site/public/tex-svg-full-AYDXXAHZ.min.js",
+    "_site/public/stateDiagram-v2-4FDKWEC3-ROPGO47R.min.js.map",
+    "_site/public/stateDiagram-v2-4FDKWEC3-ROPGO47R.min.js",
+    "works/Ideas/mask.png",
     "notes/SimpleSkillsGuide/Basic_Use_of_WebCrawler.md",
-    "works/Articles/Opposite_Seat.md",
-    "works/Articles/Umbrella_on_the_corridor.md",
-    "_site/notes/SimpleSkillsGuide/Basic_Use_of_WebCrawler.html",
-    "notes/SimpleSkillsGuide/Custom_Swagger_Page.md",
-    "_site/notes/SimpleSkillsGuide/Make_Nuget_Package.html",
-    "_site/notes/SimpleSkillsGuide/Make_Docker_Image.html",
-    "_site/notes/SimpleSkillsGuide/Custom_Swagger_Page.html",
-    "_site/notes/SimpleSkillsGuide",
     "notes/SimpleSkillsGuide/Make_Nuget_Package.md",
+    "notes/Angular/LearningAngular.md",
+    "notes/MAUI/Rebuilding_HabitKit_With_MAUI/00_Project_Overview.md",
+    "notes/ABP/GettingStart.md",
+    "Readme.md",
+    "notes/MAUI/Rebuilding_HabitKit_With_MAUI/01_PreDesign_and_PreWork.md",
+    "works/Articles/Umbrella_on_the_corridor.md",
+    "works/Articles/Opposite_Seat.md",
+    "about/index.md",
+    "notes/SQL.md",
+    "notes/SimpleSkillsGuide/Custom_Swagger_Page.md",
     "notes/SimpleSkillsGuide/Make_Docker_Image.md",
-    "notes/Redis.md",
-    "notes/SimpleSkillsGuide",
-    "notes/MakingGame/Aseprite/Intall_Aseprite.md",
+    "notes/SchoolRelated/PracticalTraining/DAY01.md",
+    "notes/SchoolRelated/PracticalTraining/DAY00.md",
     "notes/MakingGame/Unity/reflaction.md",
-    "_site/notes/MakingGame/KiriKiri/Basic_Script.html",
-    "_site/notes/MakingGame/Aseprite/Intall_Aseprite.html",
-    "_site/notes/MakingGame/Aseprite",
-    "notes/MakingGame/Aseprite",
+    "notes/MakingGame/KiriKiri/Basic_Script.md",
+    "notes/MakingGame/Aseprite/Intall_Aseprite.md",
+    "undefined/api/img/eyJmYWNlIjoxMSwibm9zZSI6MTAsIm1vdXRoIjoxLCJleWVzIjo2LCJleWVicm93cyI6MiwiZ2xhc3NlcyI6MiwiaGFpciI6NDEsImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MSwiY29sb3IiOiIjZWIyZjk2Iiwic2hhcGUiOiJub25lIn0=.md",
+    "notes/Redis.md",
     "_site/works/Ideas/mask.png",
     "7e34f9deb48f8c54cb58bf5631292df5e1fe7fa1.png",
     "works/Ideas/7e34f9deb48f8c54cb58bf5631292df5e1fe7fa1.png",
-    "Readme.md",
-    "index.md",
-    "notes/SchoolRelated/PracticalTraining/DAY00.md",
     "notes/SchoolRelated/PracticalTraining/DAY12.md",
-    "notes/index.md",
-    "notes/SchoolRelated/PracticalTraining/DAY02.md",
-    "notes/SchoolRelated/PracticalTraining/DAY05.md",
-    "notes/SchoolRelated/PracticalTraining/DAY11.md",
-    "notes/SchoolRelated/PracticalTraining/DAY04.md",
-    "notes/SchoolRelated/PracticalTraining/DAY03.md",
-    "notes/SchoolRelated/PracticalTraining/DAY01.md",
-    "about/index.md"
+    "notes/index.md"
   ]
 }
