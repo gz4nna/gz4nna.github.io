@@ -1,5 +1,5 @@
 {
-  "source_base_path": "D:/GitRepo/gz4nna.github.io",
+  "source_base_path": "D:/gz4nna.github.io",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -82,6 +82,36 @@
       "output": {
         ".html": {
           "relative_path": "notes/ABP/GettingStart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/Angular/LearningAngular.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/Angular/LearningAngular.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/MAUI/Rebuilding_HabitKit_With_MAUI/00_Project_Overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/MAUI/Rebuilding_HabitKit_With_MAUI/00_Project_Overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/MAUI/Rebuilding_HabitKit_With_MAUI/01_PreDesign_and_PreWork.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/MAUI/Rebuilding_HabitKit_With_MAUI/01_PreDesign_and_PreWork.html"
         }
       },
       "version": ""
@@ -278,49 +308,6 @@
         },
         ".json": {
           "relative_path": "toc.json"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "works/Articles/Opposite_Seat.md",
-      "output": {
-        ".html": {
-          "relative_path": "works/Articles/Opposite_Seat.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "works/Articles/Umbrella_on_the_corridor.md",
-      "output": {
-        ".html": {
-          "relative_path": "works/Articles/Umbrella_on_the_corridor.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "works/Ideas/Energy_Crossbow_Design.md",
-      "output": {
-        ".html": {
-          "relative_path": "works/Ideas/Energy_Crossbow_Design.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "works/toc.yml",
-      "output": {
-        ".html": {
-          "relative_path": "works/toc.html"
-        },
-        ".json": {
-          "relative_path": "works/toc.json"
         }
       },
       "version": ""

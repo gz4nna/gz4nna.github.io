@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>前期工作和設計 | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="前期工作和設計 | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MAUI/Rebuilding_HabitKit_With_MAUI/01_PreDesign_and_PreWork.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="前期工作和設計">前期工作和設計</h1>
+
+<p>技術選型我選擇了 <code>MAUI</code> 作爲開發的框架, <code>SQLite</code> 作爲本地數據庫, <code>BootstrapBlazor</code> 作爲UI庫</p>
+<p>這一套技術棧的搭配我已經不是第一次嘗試了, 不過這次的目的是爲了鞏固所以依舊沿用老一套方案</p>
+<h2 id="創建項目">創建項目</h2>
+<p>創建時選擇模板 <code>.NET MAUI Blazor Application</code>, 目標框架使用 <code>.NET 8.0</code></p>
+<p>創建完成 <code>RebuildingHabitKit.MAUI</code> 后直接運行 <code>Android Emulator</code>, 一切正常后繼續下一步</p>
+<h2 id="本地數據庫">本地數據庫</h2>
+<p><code>HabitKit</code> 能夠由用戶創建一個&quot;習慣&quot;(Habit),並持續對其記錄完成情況, 因此我們必須擁有存儲數據的能力</p>
+<h3 id="安裝依賴">安裝依賴</h3>
+<p>在 <code>Nuget</code> 中安裝以下依賴</p>
+<ul>
+<li><code>Microsoft.EntityFrameworkCore.Sqlite</code></li>
+<li><code>Microsoft.EntityFrameworkCore.Tools</code></li>
+<li><code>Microsoft.EntityFrameworkCore.Design</code></li>
+</ul>
+<p>需要注意安裝的大版本必須和使用的 <code>.net</code> 大版本一致</p>
+<h3 id="全局引用">全局引用</h3>
+<p>在 <code>Compoments/_Import.razor</code> 中添加引用語句可以令其成爲全局引用(global using), 避免繁雜的反復顯式引用</p>
+<pre><code class="lang-csharp">@using Microsoft.EntityFrameworkCore
+</code></pre>
+<h3 id="測試">測試</h3>
+<p>通過使用簡單的測試驗證目前項目可用</p>
+<h4 id="測試用模型">測試用模型</h4>
+<p>新建一個類庫 <code>RebuildingHabitKit.Model</code>, 和 <code>MAUI</code> 項目一致, 選擇 <code>.NET 8.0</code></p>
+<p>在 <code>RebuildingHabitKit.Model.Test</code> 資料夾下創建兩個類型</p>
+<pre><code class="lang-csharp">namespace RebuildingHabitKit.Model.Test;
+
+public class TestTable
+{
+    public List&lt;TestRow&gt;? Rows { get; set; }
+}
+</code></pre>
+<pre><code class="lang-csharp">namespace RebuildingHabitKit.Model.Test;
+
+public class TestRow
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+    public TestRow(int id, string name, string description)
+    {
+        Id = id;
+        Name = name;
+        Description = description;
+        CreatedAt = DateTime.Now;
+        UpdatedAt = DateTime.Now;
+    }
+}
+</code></pre>
+<p>爲了鏈接上數據庫,還需要額外一個</p>
+<pre><code class="lang-csharp">namespace RebuildingHabitKit.Model.Test;
+
+public class TestDbContext:DbContext
+{
+    public DbSet&lt;TestRow&gt; TestRows { get; set; }
+    public DbSet&lt;TestTable&gt; TestTables { get; set; }
+
+    public string DbPath { get; }
+
+    public TestDbContext()
+    {
+        var folder = Environment.SpecialFolder.LocalApplicationData;
+        var path = Environment.GetFolderPath(folder);
+        DbPath = System.IO.Path.Join(path, &quot;testDatabase.db&quot;);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
+        =&gt; dbContextOptionsBuilder.UseSqlite($&quot;Data Source={DbPath}&quot;);
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity&lt;TestRow&gt;().ToTable(&quot;TestRows&quot;);
+        modelBuilder.Entity&lt;TestTable&gt;().ToTable(&quot;TestTables&quot;);
+    }
+}
+</code></pre>
+<p>通過在 <code>MauiProgram.cs</code> 中添加這句,可以將 <code>DbContext</code> 注入到任意頁面中使用</p>
+<pre><code class="lang-csharp">var builder = MauiApp.CreateBuilder();
+builder.Services.AddDbContext&lt;TestDbContext&gt;();
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/MAUI/Rebuilding_HabitKit_With_MAUI/01_PreDesign_and_PreWork.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
