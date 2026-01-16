@@ -45,6 +45,96 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY00.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY00.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY01.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY01.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY02.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY02.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY03.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY03.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY04.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY04.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY05.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY05.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY06.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY06.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY11.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY11.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "archives/SchoolRelated/PracticalTraining/DAY12.md",
+      "output": {
+        ".html": {
+          "relative_path": "archives/SchoolRelated/PracticalTraining/DAY12.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "archives/index.md",
       "output": {
         ".html": {
@@ -78,20 +168,60 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/ABP/GettingStart.md",
+      "source_relative_path": "notes/LearningNotes/LanguageAndFramworks/LearningAngular.md",
       "output": {
         ".html": {
-          "relative_path": "notes/ABP/GettingStart.html"
+          "relative_path": "notes/LearningNotes/LanguageAndFramworks/LearningAngular.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/Angular/LearningAngular.md",
+      "source_relative_path": "notes/LearningNotes/SimpleSkills/Basic_Use_of_WebCrawler.md",
       "output": {
         ".html": {
-          "relative_path": "notes/Angular/LearningAngular.html"
+          "relative_path": "notes/LearningNotes/SimpleSkills/Basic_Use_of_WebCrawler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/LearningNotes/SimpleSkills/Custom_Swagger_Page.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/LearningNotes/SimpleSkills/Custom_Swagger_Page.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/LearningNotes/SimpleSkills/Intall_Aseprite.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/LearningNotes/SimpleSkills/Intall_Aseprite.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/LearningNotes/SimpleSkills/Make_Docker_Image.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/LearningNotes/SimpleSkills/Make_Docker_Image.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "notes/LearningNotes/SimpleSkills/Make_Nuget_Package.md",
+      "output": {
+        ".html": {
+          "relative_path": "notes/LearningNotes/SimpleSkills/Make_Nuget_Package.html"
         }
       },
       "version": ""
@@ -118,170 +248,30 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/MakingGame/Aseprite/Intall_Aseprite.md",
+      "source_relative_path": "notes/Projects/Apollo/todo.md",
       "output": {
         ".html": {
-          "relative_path": "notes/MakingGame/Aseprite/Intall_Aseprite.html"
+          "relative_path": "notes/Projects/Apollo/todo.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/MakingGame/KiriKiri/Basic_Script.md",
+      "source_relative_path": "notes/SummaryNotes/Apollo.SDK.NET.md",
       "output": {
         ".html": {
-          "relative_path": "notes/MakingGame/KiriKiri/Basic_Script.html"
+          "relative_path": "notes/SummaryNotes/Apollo.SDK.NET.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "notes/MakingGame/Unity/reflaction.md",
+      "source_relative_path": "notes/SummaryNotes/reflaction.md",
       "output": {
         ".html": {
-          "relative_path": "notes/MakingGame/Unity/reflaction.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SQL.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SQL.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY00.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY00.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY01.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY01.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY02.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY02.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY03.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY03.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY04.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY04.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY05.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY05.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY06.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY06.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY11.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY11.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SchoolRelated/PracticalTraining/DAY12.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SchoolRelated/PracticalTraining/DAY12.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SimpleSkillsGuide/Basic_Use_of_WebCrawler.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SimpleSkillsGuide/Basic_Use_of_WebCrawler.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SimpleSkillsGuide/Custom_Swagger_Page.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SimpleSkillsGuide/Custom_Swagger_Page.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SimpleSkillsGuide/Make_Docker_Image.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SimpleSkillsGuide/Make_Docker_Image.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "notes/SimpleSkillsGuide/Make_Nuget_Package.md",
-      "output": {
-        ".html": {
-          "relative_path": "notes/SimpleSkillsGuide/Make_Nuget_Package.html"
+          "relative_path": "notes/SummaryNotes/reflaction.html"
         }
       },
       "version": ""
