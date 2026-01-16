@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "df6a62b84a9c9455",
+        "id": "85e2dde0d0583f97",
         "type": "tabs",
         "children": [
           {
-            "id": "c5d26ffd6750e607",
+            "id": "0a9fca4a176ea8ba",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/Angular/LearningAngular.md",
+                "file": "notes/SummaryNotes/Apollo.SDK.NET.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LearningAngular"
+              "title": "Apollo.SDK.NET"
             }
           }
         ]
@@ -164,46 +164,48 @@
       "command-palette:開啟命令面板": false
     }
   },
-  "active": "c5d26ffd6750e607",
+  "active": "0a9fca4a176ea8ba",
   "lastOpenFiles": [
+    "_site/manifest.json",
+    "_site/index.json",
+    "_site/xrefmap.yml",
+    "_site/notes/Projects/Apollo/todo.html",
+    "_site/notes/Projects/Apollo",
+    "_site/notes/Projects",
+    "_site/notes/SummaryNotes/reflaction.html",
+    "_site/notes/SummaryNotes/Apollo.SDK.NET.html",
+    "_site/notes/SummaryNotes",
+    "_site/notes/MAUI/Rebuilding_HabitKit_With_MAUI/01_PreDesign_and_PreWork.html",
+    "_site/notes/MAUI/Rebuilding_HabitKit_With_MAUI/00_Project_Overview.html",
+    "_site/logo.svg",
+    "notes/SummaryNotes/reflaction.md",
+    "notes/SummaryNotes/Apollo.SDK.NET.md",
+    "notes/Projects/Apollo/todo.md",
+    "notes/LearningNotes/LanguageAndFramworks/LearningAngular.md",
+    "notes/MakingGame/KiriKiri/Basic_Script.md",
+    "notes/LearningNotes/SimpleSkills/Basic_Use_of_WebCrawler.md",
+    "notes/SQL.md",
+    "notes/ABP/GettingStart.md",
+    "notes/LearningNotes/SimpleSkills/Intall_Aseprite.md",
+    "archives/SchoolRelated/PracticalTraining/DAY05.md",
+    "archives/SchoolRelated/PracticalTraining/DAY00.md",
+    "Readme.md",
     "index.md",
     "archives/index.md",
     "works/Ideas/Energy_Crossbow_Design.md",
-    "_site/public/xychartDiagram-PRI3JC2R-7B6ZH23X.min.js.map",
-    "_site/public/xychartDiagram-PRI3JC2R-7B6ZH23X.min.js",
-    "_site/public/treemap-75Q7IDZK-DQ2GXHQO.min.js.map",
-    "_site/public/treemap-75Q7IDZK-DQ2GXHQO.min.js",
-    "_site/public/timeline-definition-IT6M3QCI-HZEFDU3R.min.js.map",
-    "_site/public/timeline-definition-IT6M3QCI-HZEFDU3R.min.js",
-    "_site/public/tex-svg-full-AYDXXAHZ.min.js.map",
-    "_site/public/tex-svg-full-AYDXXAHZ.min.js",
-    "_site/public/stateDiagram-v2-4FDKWEC3-ROPGO47R.min.js.map",
-    "_site/public/stateDiagram-v2-4FDKWEC3-ROPGO47R.min.js",
     "works/Ideas/mask.png",
-    "notes/SimpleSkillsGuide/Basic_Use_of_WebCrawler.md",
-    "notes/SimpleSkillsGuide/Make_Nuget_Package.md",
-    "notes/Angular/LearningAngular.md",
+    "notes/LearningNotes/SimpleSkills/Make_Nuget_Package.md",
     "notes/MAUI/Rebuilding_HabitKit_With_MAUI/00_Project_Overview.md",
-    "notes/ABP/GettingStart.md",
-    "Readme.md",
     "notes/MAUI/Rebuilding_HabitKit_With_MAUI/01_PreDesign_and_PreWork.md",
     "works/Articles/Umbrella_on_the_corridor.md",
     "works/Articles/Opposite_Seat.md",
     "about/index.md",
-    "notes/SQL.md",
-    "notes/SimpleSkillsGuide/Custom_Swagger_Page.md",
-    "notes/SimpleSkillsGuide/Make_Docker_Image.md",
-    "notes/SchoolRelated/PracticalTraining/DAY01.md",
-    "notes/SchoolRelated/PracticalTraining/DAY00.md",
-    "notes/MakingGame/Unity/reflaction.md",
-    "notes/MakingGame/KiriKiri/Basic_Script.md",
-    "notes/MakingGame/Aseprite/Intall_Aseprite.md",
+    "notes/LearningNotes/SimpleSkills/Custom_Swagger_Page.md",
+    "notes/LearningNotes/SimpleSkills/Make_Docker_Image.md",
+    "archives/SchoolRelated/PracticalTraining/DAY01.md",
     "undefined/api/img/eyJmYWNlIjoxMSwibm9zZSI6MTAsIm1vdXRoIjoxLCJleWVzIjo2LCJleWVicm93cyI6MiwiZ2xhc3NlcyI6MiwiaGFpciI6NDEsImFjY2Vzc29yaWVzIjowLCJkZXRhaWxzIjowLCJiZWFyZCI6MCwiZmxpcCI6MSwiY29sb3IiOiIjZWIyZjk2Iiwic2hhcGUiOiJub25lIn0=.md",
-    "notes/Redis.md",
     "_site/works/Ideas/mask.png",
     "7e34f9deb48f8c54cb58bf5631292df5e1fe7fa1.png",
-    "works/Ideas/7e34f9deb48f8c54cb58bf5631292df5e1fe7fa1.png",
-    "notes/SchoolRelated/PracticalTraining/DAY12.md",
-    "notes/index.md"
+    "works/Ideas/7e34f9deb48f8c54cb58bf5631292df5e1fe7fa1.png"
   ]
 }

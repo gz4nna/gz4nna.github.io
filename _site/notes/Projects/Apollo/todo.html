@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> | GZ4nna&#39;s Notes </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | GZ4nna&#39;s Notes ">
+      
+      
+      <link rel="icon" href="../../../favicon.ico">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/Projects/Apollo/todo.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../logo.svg" alt="GZ4nna&#39;s Notes">
+            GZ4nna&#39;s Notes
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+<p>自定义接入（比如接入 Serilog 或 Console）的入口</p>
+<p>未来可能会支持网络请求（如 API 模式）。在 .NET 中，应该预留 <code>Task&lt;bool&gt; IsEnabledAsync</code> 接口，或者确保核心逻辑是同步的。</p>
+<p>考虑加入 <code>IEvaluationStrategy</code> 接口。万一以后有人想把灰度逻辑从“内存判断”改成“Redis 远程判断”，他只需要实现你的接口并注入即可。</p>
+<p>深入研究 <code>Span&lt;T&gt;</code>、<code>Memory&lt;T&gt;</code> 以及 <code>PipeReader/Writer</code>。在编写灰度系统这种高频触发的组件时，如何做到 <strong>Zero-allocation（零内存分配）</strong> 是一门艺术。这不仅是能力的提升，更是在求职时秒杀面试官的杀手锏。</p>
+<p>可以尝试研究 <strong>Reactive Extensions (Rx.NET)</strong>。这种异步流的处理思想，能让你在处理复杂的 UI 自动化逻辑时，把凌乱的状态机变成优雅的流式观察者模式。</p>
+<ul>
+<li><p>在 .NET (ASP.NET Core) 开发中，几乎所有的包都是通过 <code>IServiceCollection</code> 注入的。 <strong>当前问题</strong>：你的 Client 需要手动 <code>new</code>。 <strong>改进建议</strong>：提供一个扩展方法，让用户可以在 <code>Program.cs</code> 里配置好路径。</p>
+</li>
+<li><p><strong>Context 的构建</strong> 使用类似 Java 那样的链式调用（<code>.Set().Set()</code>）会极大地提升用户体验。</p>
+</li>
+<li><p>将 <code>IsToggleAllow</code> 改为 <code>IsEnabled</code>，</p>
+</li>
+<li><p>把 <code>userId</code> 从 <code>IsEnabled</code> 方法参数中拿出来，放进 <code>ApolloContext</code> 的构造函数里。因为 <code>userId</code> 本质上是上下文的一部分，而不是开关的一个属性。</p>
+</li>
+<li><p>如果你能确保你的 SDK 在 AOT 模式下依然完美运行（不使用动态反射等），那么它在云原生和轻量级客户端（如你写的自动化工具）中将极具竞争力。只需要确保在 <strong>序列化</strong> 和 <strong>依赖注入</strong> 时不使用“黑魔法”反射即可</p>
+</li>
+</ul>
+<p><del>在 .NET 中极致的玩法是 <strong>Source Generators</strong>。你可以尝试将那些繁琐的“人群校验逻辑”或“属性映射”在编译阶段就生成好，而不是运行时通过反射或字典查找。这会让你的 SDK 运行速度快得像原始代码一样。</del></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/gz4nna/gz4nna.github.io/blob/main/notes/Projects/Apollo/todo.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

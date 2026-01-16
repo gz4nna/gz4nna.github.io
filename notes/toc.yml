@@ -1,17 +1,18 @@
 - name: 学习笔记
 - name: 简单技能学习
   items:
-  - href: SimpleSkillsGuide/Basic_Use_of_WebCrawler.md
-  - href: SimpleSkillsGuide/Custom_Swagger_Page.md
-  - href: SimpleSkillsGuide/Make_Nuget_Package.md
-  - href: SimpleSkillsGuide/Make_Docker_Image.md
-  - href: MakingGame/Aseprite/Intall_Aseprite.md
+  - href: LearningNotes/SimpleSkills/Basic_Use_of_WebCrawler.md
+  - href: LearningNotes/SimpleSkills/Custom_Swagger_Page.md
+  - href: LearningNotes/SimpleSkills/Make_Nuget_Package.md
+  - href: LearningNotes/SimpleSkills/Make_Docker_Image.md
+  - href: LearningNotes/SimpleSkills/Intall_Aseprite.md
 - name: 语言框架学习
   items:
-  - href: Angular/LearningAngular.md
+  - href: LearningNotes/LanguageAndFramworks/LearningAngular.md
 
 - name: 总结感悟
 - name: 项目制作
   items:
-  - href: MakingGame/Unity/reflaction.md
+  - href: SummaryNotes/Apollo.SDK.NET.md
+  - href: SummaryNotes/reflaction.md
 
